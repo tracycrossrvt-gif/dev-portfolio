@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import winterFogVideo from '../../assets/media/winter-fog.mp4'
+import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
 import { projects } from '../../content/projects'
 import { about } from '../../content/about'
 import { site } from '../../content/site'
@@ -6,24 +9,55 @@ import { site } from '../../content/site'
 function HomePage() {
   const featuredProjects = projects.filter((project) => project.featured)
   const secondaryProjects = projects.filter((project) => !project.featured)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const updatePreference = () => {
+      setPrefersReducedMotion(mediaQuery.matches)
+    }
+
+    updatePreference()
+
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', updatePreference)
+
+      return () => {
+        mediaQuery.removeEventListener('change', updatePreference)
+      }
+    }
+
+    mediaQuery.addListener(updatePreference)
+
+    return () => {
+      mediaQuery.removeListener(updatePreference)
+    }
+  }, [])
 
   return (
     <>
       <section className="page-section hero-section">
-        <div className="container hero-grid">
-          <div>
+        <div className="container hero-stage">
+          <div className="hero-copy">
             <p className="eyebrow">Systems thinking / product judgment / frontend craft</p>
             <h1>{site.title}</h1>
             <p className="lead">{site.thesis}</p>
           </div>
 
-          <div className="hero-aside">
-            <p className="aside-label">Selected systems</p>
-            <ul className="list-plain">
-              {projects.map((project) => (
-                <li key={project.slug}>{project.title}</li>
-              ))}
-            </ul>
+          <div className="hero-media" aria-hidden="true">
+            {prefersReducedMotion ? (
+              <img src={winterFogPoster} alt="" />
+            ) : (
+              <video
+                src={winterFogVideo}
+                poster={winterFogPoster}
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            )}
           </div>
         </div>
       </section>
