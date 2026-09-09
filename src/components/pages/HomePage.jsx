@@ -72,9 +72,14 @@ function HomePage() {
           <div className="project-grid">
             {featuredProjects.map((project) => (
               <article key={project.slug} className="project-card project-card-featured">
-                <p className="project-meta">{project.label}</p>
-                <h3>{project.title}</h3>
-                <p>{project.previewBlurb}</p>
+                <div className="project-media" aria-hidden="true">
+                  <span className="project-media-label">Media region</span>
+                </div>
+                <div className="project-body">
+                  <p className="project-meta">{project.label}</p>
+                  <h3>{project.title}</h3>
+                  <p>{project.previewBlurb}</p>
+                </div>
                 <div className="project-links">
                   {project.caseStudyPath ? (
                     <Link to={project.caseStudyPath}>Read case study</Link>
@@ -91,17 +96,20 @@ function HomePage() {
 
       <section className="page-section">
         <div className="container">
-          <div className="section-intro">
-            <p className="eyebrow">Additional work</p>
-            <h2>Strong project presentations with room to grow.</h2>
-          </div>
-
           <div className="project-grid secondary-grid">
-            {secondaryProjects.map((project) => (
-              <article key={project.slug} className="project-card">
-                <p className="project-meta">{project.label}</p>
-                <h3>{project.title}</h3>
-                <p>{project.previewBlurb}</p>
+            {secondaryProjects.map((project, index) => (
+              <article
+                key={project.slug}
+                className={index === 0 ? 'project-card project-card-secondary' : 'project-card project-card-supporting'}
+              >
+                <div className="project-media" aria-hidden="true">
+                  <span className="project-media-label">Media region</span>
+                </div>
+                <div className="project-body">
+                  <p className="project-meta">{project.label}</p>
+                  <h3>{project.title}</h3>
+                  <p>{project.previewBlurb}</p>
+                </div>
                 <div className="project-links">
                   <a href={project.liveUrl}>Live project</a>
                   <a href={project.repoUrl}>Repository</a>

@@ -224,7 +224,7 @@
 }
 
 .secondary-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-card {
@@ -239,6 +239,18 @@
 .project-card-featured {
   grid-column: span 2;
   background: linear-gradient(180deg, rgba(126, 107, 139, 0.08), rgba(255, 255, 255, 0.01));
+  padding: clamp(1.5rem, 1.8vw, 2.25rem);
+}
+
+.project-card-secondary {
+  grid-column: span 2;
+  background: rgba(255, 255, 255, 0.014);
+}
+
+.project-card-supporting {
+  padding: 1.1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.008);
+  border-color: rgba(255, 255, 255, 0.02);
 }
 
 .project-meta {
@@ -248,8 +260,56 @@
   text-transform: uppercase;
 }
 
+.project-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 8.25rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.01);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.68rem;
+}
+
+.project-media-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.project-card-featured .project-media {
+  min-height: 19rem;
+}
+
+.project-card-secondary .project-media {
+  min-height: 13rem;
+}
+
+.project-card-supporting .project-media {
+  min-height: 7rem;
+}
+
 .project-card h3 {
   font-size: 1.7rem;
+}
+
+.project-card-featured h3 {
+  font-size: clamp(2.1rem, 3vw, 3rem);
+  line-height: 0.96;
+}
+
+.project-card-secondary h3 {
+  font-size: clamp(1.5rem, 2.2vw, 2.1rem);
+}
+
+.project-card-supporting h3 {
+  font-size: 1.3rem;
 }
 
 .project-card p {
@@ -261,6 +321,10 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: auto;
+}
+
+.project-card-supporting .project-links {
+  gap: 0.75rem;
 }
 
 .project-links a,
@@ -389,7 +453,9 @@
       );
   }
 
-  .project-card-featured {
+  .project-card-featured,
+  .project-card-secondary,
+  .project-card-supporting {
     grid-column: auto;
   }
 
