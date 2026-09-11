@@ -3,12 +3,24 @@ import { Link } from 'react-router-dom'
 import winterFogVideo from '../../assets/media/winter-fog.mp4'
 import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
 import { projects } from '../../content/projects'
-import { about } from '../../content/about'
 import { site } from '../../content/site'
 
 function HomePage() {
   const featuredProjects = projects.filter((project) => project.featured)
   const secondaryProjects = projects.filter((project) => !project.featured)
+  const howIBuild = [
+    'I start by understanding the whole system, not just the symptom.',
+    'I look for the friction: the bottlenecks, the duplicated work, the unclear handoffs, the places where people have to improvise.',
+    'Then I model what actually needs to happen so the solution matches the real workflow, not a theoretical one.',
+    'I build the smallest useful thing that removes the friction and gives people clarity.',
+    'I test it against reality, because operational systems are always messier than they first appear.',
+    'I refine it until the work feels easier, clearer, and more humane.',
+  ]
+  const aboutPreview = [
+    'My background has always been rooted in operations, decision-making, and the realities of complex systems.',
+    'Over nearly two decades working inside complex operational environments, I learned to see people, workflows, dependencies, bottlenecks, constraints, and downstream consequences.',
+    'That perspective is why I approach software the way I do: not just as a set of features, but as a system that supports real work and reduces friction.',
+  ]
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   useEffect(() => {
@@ -127,11 +139,11 @@ function HomePage() {
             <h2>I look for the friction, then I shape the system around it.</h2>
           </div>
 
-          <div className="text-stack">
-            {about.approach.map((item) => (
-              <p key={item}>{item}</p>
+          <ol className="list-plain">
+            {howIBuild.map((item) => (
+              <li key={item}>{item}</li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -139,11 +151,11 @@ function HomePage() {
         <div className="container">
           <div className="section-intro">
             <p className="eyebrow">About</p>
-            <h2>Operational experience, product judgment, and thoughtful software.</h2>
+            <h2>Why I think this way.</h2>
           </div>
 
           <div className="text-stack">
-            {about.story.map((item) => (
+            {aboutPreview.map((item) => (
               <p key={item}>{item}</p>
             ))}
           </div>
@@ -163,9 +175,15 @@ function HomePage() {
             <h2>Let’s build something that makes people’s lives easier.</h2>
           </div>
 
-          <div className="cta-row">
+          <div className="cta-row footer-links">
             <a className="button-link" href={`mailto:${site.contact.email}`}>
-              {site.contact.email}
+              Email
+            </a>
+            <a className="button-link" href={site.contact.github}>
+              GitHub
+            </a>
+            <a className="button-link" href={site.contact.linkedin}>
+              LinkedIn
             </a>
           </div>
         </div>
