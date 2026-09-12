@@ -17,6 +17,11 @@ function MmacCaseStudyPage() {
           <p className="eyebrow">MMAC HUB / PRODUCT ENGINEERING CASE STUDY</p>
           <h1>Turning a growing animal-welfare operation into a system that can scale.</h1>
           <p className="lead">
+            MMAC is a community animal-care nonprofit coordinating access to veterinary care
+            and related resources across a growing network of people, programs, and partner
+            organizations.
+          </p>
+          <p className="lead">
             Macon Moves Animal Care began as a young nonprofit solving an enormous
             community need. As the organization grew across counties, partner hospitals,
             volunteers, clinics, and assistance programs, the operational complexity grew
@@ -97,8 +102,8 @@ function MmacCaseStudyPage() {
 
             <div className="info-block">
               <p>
-                <strong>MMAC Administrator</strong> Control availability, review requests,
-                manage exceptions, and maintain operational oversight.
+                <strong>MMAC's administrator</strong> Controls availability, reviews
+                requests, manages exceptions, and maintains operational oversight.
               </p>
             </div>
 
@@ -392,21 +397,22 @@ function MmacCaseStudyPage() {
               forward.
             </p>
             <p>
-              The challenge was designing that complexity without transferring it to
-              Stephanie.
+              The challenge was designing that complexity without transferring it to the
+              administrator.
             </p>
             <p>
               MMAC's administrator needs to remain firmly in control of availability, but
-              managing it cannot become another administrative burden. She needs to be able
-              to make quick decisions across multiple touch points, often while moving
-              between responsibilities and sometimes from her phone.
+              managing it cannot become another administrative burden. The administrator
+              needs to be able to make quick decisions across multiple touch points, often
+              while moving between responsibilities and sometimes from a phone.
             </p>
             <p>
               That created a product constraint I care about deeply:
             </p>
             <p>
               <strong>
-                The system can be complex underneath. Stephanie's experience cannot be.
+                The system can be complex underneath. The administrator's experience cannot
+                be.
               </strong>
             </p>
             <p>
@@ -418,21 +424,18 @@ function MmacCaseStudyPage() {
             </p>
             <p>
               For the administrator experience, the goal is lightweight, fast, and
-              mobile-friendly: enough information to make a decision without requiring
-              Stephanie to manage the machinery behind that decision.
+              mobile-friendly: enough information to make a decision without requiring the
+              administrator to manage the machinery behind that decision.
             </p>
             <p>
-              This section should visually reinforce the existing product principle from
-              earlier in the case study:
+              That product constraint is part of why I kept the administrator experience
+              lightweight, fast, and mobile-friendly.
             </p>
             <p>
               <strong>
                 Expose what the user needs without exposing the machinery required to
                 provide it.
               </strong>
-            </p>
-            <p>
-              Do not invent an availability UI or diagram for this section.
             </p>
           </div>
 
@@ -466,6 +469,91 @@ function MmacCaseStudyPage() {
                 This isn't the finished MMAC Hub. It's the point where discovery became
                 architecture—and architecture became working software.
               </strong>
+            </p>
+          </div>
+
+          <div className="info-block">
+            <h2>08 — What I owned</h2>
+            <p>
+              I owned the product thinking behind MMAC Hub: discovery, requirements
+              translation, workflow modeling, MVP definition, data architecture,
+              implementation planning, and validation.
+            </p>
+            <p>
+              My veterinary operations background helped me recognize the operational
+              consequences behind seemingly small decisions, but I treated MMAC's actual
+              workflows and constraints as the source of truth rather than designing from
+              assumptions.
+            </p>
+            <p>
+              I used AI-assisted development tools to accelerate implementation and
+              exploration, while retaining responsibility for product decisions,
+              architecture, review, testing, and validation.
+            </p>
+          </div>
+
+          <div className="info-block">
+            <h2>09 — Validating the model</h2>
+            <p>
+              The architecture was reviewed with MMAC's administrator, who works closest to
+              the organization’s day-to-day operational complexity.
+            </p>
+            <p>
+              The proposed workflows and system model remained largely intact after review,
+              giving me confidence that the product direction reflected how MMAC actually
+              operates rather than how I imagined it should operate.
+            </p>
+            <p>
+              That validation matters to me because a technically elegant system is only
+              useful if it fits the people who have to use it.
+            </p>
+          </div>
+
+          <div className="info-block">
+            <h2>10 — What I learned</h2>
+            <p>
+              MMAC Hub reinforced something I already knew from operations: the hardest
+              problems usually aren’t isolated features. They’re the relationships between
+              people, information, timing, responsibility, and exceptions.
+            </p>
+            <p>
+              I learned that good product architecture often means making those
+              relationships explicit before writing much software.
+            </p>
+            <p>
+              I also learned to separate <strong>what needs to be understood now</strong>{' '}
+              from <strong>what needs to be built now</strong>. Modeling future requirements
+              early can prevent expensive dead ends, but that doesn’t mean every future
+              capability belongs in the MVP.
+            </p>
+            <p>
+              The goal is not to remove complexity from the real world. It is to keep that
+              complexity from becoming unnecessary friction for the people using the
+              product.
+            </p>
+          </div>
+
+          <div className="info-block">
+            <h2>11 — What’s next</h2>
+            <p>
+              The next major product phase is dynamic scheduling.
+            </p>
+            <p>
+              The foundation already anticipates the variables that make access to care
+              possible: provider availability, location, services needed, pricing, and
+              organizational capacity. The next challenge is turning those relationships
+              into a scheduling experience that remains lightweight and fast for the
+              administrator while preserving appropriate control.
+            </p>
+            <p>
+              Future phases can continue building outward from the same foundation into
+              partner-hospital workflows, notifications, clinic operations, reporting,
+              forms and signatures, resources, and other MMAC programs.
+            </p>
+            <p>
+              MMAC Hub is still evolving, but the direction is clear: <strong>build the
+              operational infrastructure that allows MMAC to spend less time coordinating
+              the system and more time helping animals and people.</strong>
             </p>
           </div>
 
