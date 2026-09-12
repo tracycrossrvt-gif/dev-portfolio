@@ -1,6 +1,5 @@
 import { projects } from '../../content/projects'
 import assistanceIntakeSchema from '../../assets/media/mmac-assistance-intake-schema.png'
-import targetSystemErd from '../../assets/media/mmac-target-system-erd.png'
 import coreWorkflowsMvp from '../../assets/media/mmac-core-workflows-mvp.png'
 
 function MmacCaseStudyPage() {
@@ -286,12 +285,22 @@ function MmacCaseStudyPage() {
             <figure className="case-study-figure">
               <img
                 src={assistanceIntakeSchema}
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
                 alt="Implemented MMAC Hub Assistance Intake relational schema showing relationships between people, households, animals, assistance requests, requested services, and prescreening."
               />
               <figcaption>
                 <strong>IMPLEMENTED / ASSISTANCE INTAKE FOUNDATION</strong> The relational
                 model separates people, households, animals, requests, services, and
                 prescreening so later workflows can build on shared operational data.
+                <span className="evidence-note">
+                  Schema diagram documenting the intake foundation, not an application screen.
+                  Requests link to individual animals, with services and prescreening attached
+                  to each request animal; availability is modeled separately.
+                </span>
+                <a href={assistanceIntakeSchema}>View full-size intake schema</a>
               </figcaption>
             </figure>
 
@@ -304,20 +313,6 @@ function MmacCaseStudyPage() {
                 and resource workflows.
               </p>
             </div>
-
-            <figure className="case-study-figure">
-              <img
-                src={targetSystemErd}
-                alt="Target system model for MMAC Hub showing the broader relational architecture for care, scheduling, clinics, resources, community programs, and reporting beyond the currently implemented Assistance Intake foundation."
-              />
-              <figcaption>
-                <strong>TARGET SYSTEM MODEL / DESIGNED</strong> The broader relational
-                architecture for MMAC Hub. This model extends beyond the currently
-                implemented Assistance Intake foundation and maps how future care,
-                scheduling, clinics, resources, community programs, and reporting can
-                connect.
-              </figcaption>
-            </figure>
           </div>
 
           <div className="info-block">
@@ -375,11 +370,22 @@ function MmacCaseStudyPage() {
             <figure className="case-study-figure">
               <img
                 src={coreWorkflowsMvp}
+                width="1536"
+                height="1024"
+                loading="lazy"
+                decoding="async"
                 alt="Designed MMAC Hub product model showing the core user paths and shared operational data required underneath assistance intake, vaccine clinics, volunteer and donation workflows, and the administrator portal."
               />
               <figcaption>
                 <strong>PRODUCT MODEL / MVP WORKFLOWS</strong> This artifact maps the core
                 user paths and the shared operational data required underneath them.
+                <span className="evidence-note">
+                  Planned workflows, not shipped interfaces. Get Help moves from request and
+                  prescreening to administrator review and care coordination. Vaccine Clinics
+                  follows check-in, services, and records. Volunteer &amp; Donate connects
+                  participation and resources to the same shared data foundation.
+                </span>
+                <a href={coreWorkflowsMvp}>View full-size workflow diagram</a>
               </figcaption>
             </figure>
           </div>

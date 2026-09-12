@@ -377,7 +377,7 @@
 }
 
 .case-study-figure {
-  margin-top: 2rem;
+  margin: 2rem 0 0;
   border-top: 1px solid var(--border);
   padding-top: 1rem;
 }
@@ -385,6 +385,7 @@
 .case-study-figure img {
   display: block;
   width: 100%;
+  height: auto;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.01);
 }
@@ -397,6 +398,49 @@
 
 .case-study-figure figcaption strong {
   color: var(--bone);
+}
+
+.mmac-evidence-preview {
+  margin: 0;
+  min-width: 0;
+}
+
+.mmac-evidence-preview img {
+  width: 100%;
+  max-width: 48rem;
+  height: auto;
+  margin-inline: auto;
+  border: 1px solid var(--border);
+}
+
+.mmac-evidence-preview figcaption {
+  margin-top: 0.85rem;
+  color: var(--bone-soft);
+  font-size: 0.92rem;
+}
+
+.mmac-evidence-preview figcaption strong,
+.mmac-evidence-preview figcaption span,
+.evidence-note {
+  display: block;
+}
+
+.mmac-evidence-preview figcaption strong {
+  color: var(--bone);
+}
+
+.evidence-note {
+  margin-top: 0.75rem;
+}
+
+.mmac-evidence-preview figcaption a,
+.case-study-figure figcaption a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: 0.5rem;
+  color: var(--bone);
+  text-underline-offset: 0.2em;
 }
 
 .site-footer {

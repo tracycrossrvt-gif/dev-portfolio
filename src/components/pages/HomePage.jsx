@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import coreWorkflowsMvp from '../../assets/media/mmac-core-workflows-mvp.png'
 import winterFogVideo from '../../assets/media/winter-fog.mp4'
 import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
 import { projects } from '../../content/projects'
@@ -84,9 +85,27 @@ function HomePage() {
           <div className="project-grid">
             {featuredProjects.map((project) => (
               <article key={project.slug} className="project-card project-card-featured">
-                <div className="project-media" aria-hidden="true">
-                  <span className="project-media-label">Media region</span>
-                </div>
+                {project.slug === 'mmac-hub' ? (
+                  <figure className="mmac-evidence-preview">
+                    <img
+                      src={coreWorkflowsMvp}
+                      width="1536"
+                      height="1024"
+                      loading="lazy"
+                      decoding="async"
+                      alt="MMAC workflow diagram: Get Help, Vaccine Clinics, and Volunteer & Donate connect to shared operational data."
+                    />
+                    <figcaption>
+                      <strong>Workflow design · In development</strong>
+                      <span>Three public paths, with administrator review and shared data underneath.</span>
+                      <a href={coreWorkflowsMvp}>View full-size workflow diagram</a>
+                    </figcaption>
+                  </figure>
+                ) : (
+                  <div className="project-media" aria-hidden="true">
+                    <span className="project-media-label">Media region</span>
+                  </div>
+                )}
                 <div className="project-body">
                   <p className="project-meta">{project.label}</p>
                   <h3>{project.title}</h3>
