@@ -9,8 +9,9 @@ export const site = {
     { label: 'MMAC Case Study', to: '/case-studies/mmac-hub' },
   ],
   contact: {
-    email: 'hello@portfolio.dev',
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
+    email: 'tracycrossrvt@gmail.com',
+    github: 'https://github.com/tracycrossrvt-gif',
+    linkedin:
+      'https://www.linkedin.com/in/tracy-cross-02b827370?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
 }

@@ -46,12 +46,6 @@ function AboutPage() {
           ))}
         </div>
 
-        <ul className="list-plain about-observations">
-          {about.observations.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-
         <section className="about-section">
           <p className="eyebrow">Operations</p>
           <h2>{about.operations.heading}</h2>
@@ -90,7 +84,6 @@ function AboutPage() {
         </div>
 
         <section className="about-section">
-          <p className="eyebrow">Why software</p>
           <h2>{about.whySoftware.heading}</h2>
 
           <div className="text-stack">
@@ -103,7 +96,6 @@ function AboutPage() {
         </section>
 
         <section className="about-section">
-          <p className="eyebrow">Evidence</p>
           <h2>{about.evidence.heading}</h2>
 
           <div className="text-stack">

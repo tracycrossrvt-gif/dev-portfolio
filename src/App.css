@@ -52,7 +52,7 @@
 .brand-mark {
   display: block;
   width: auto;
-  height: 1.4rem;
+  height: 2.2rem;
   opacity: 0.85;
 }
 
@@ -281,16 +281,6 @@
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.68rem;
-}
-
-.project-media-label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2rem;
-  padding: 0.45rem 0.75rem;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.015);
 }
 
 .project-media-image {

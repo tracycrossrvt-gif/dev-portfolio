@@ -116,7 +116,9 @@ function HomePage() {
                   ) : (
                     <a href={project.liveUrl}>Live project</a>
                   )}
-                  <a href={project.repoUrl}>Repository</a>
+                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                    Repository
+                  </a>
                 </div>
               </article>
             ))}
@@ -231,6 +233,14 @@ function HomePage() {
             </a>
             <a className="button-link" href={site.contact.linkedin}>
               LinkedIn
+            </a>
+            <a
+              className="button-link"
+              href="/Tracy_Cross_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
             </a>
           </div>
         </div>

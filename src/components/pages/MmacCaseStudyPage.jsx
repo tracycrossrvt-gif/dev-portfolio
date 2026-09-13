@@ -566,8 +566,9 @@ function MmacCaseStudyPage() {
           <div className="info-block">
             <h2>Project links</h2>
             <div className="project-links">
-              <a href={project.liveUrl}>Live project</a>
-              <a href={project.repoUrl}>Repository</a>
+              <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                Repository
+              </a>
             </div>
           </div>
         </article>

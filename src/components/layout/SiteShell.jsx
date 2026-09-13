@@ -37,6 +37,9 @@ function SiteShell({ children }) {
             <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
             <a href={site.contact.github}>GitHub</a>
             <a href={site.contact.linkedin}>LinkedIn</a>
+            <a href="/Tracy_Cross_Resume.pdf" target="_blank" rel="noopener noreferrer">
+              Resume
+            </a>
           </div>
         </div>
       </footer>

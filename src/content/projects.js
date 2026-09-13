@@ -9,8 +9,8 @@ export const projects = [
     previewBlurb:
       'A flagship product initiative shaped around reducing friction in an operational system and making decisions easier for the people using it.',
     featured: true,
-    liveUrl: '#',
-    repoUrl: '#',
+    liveUrl: null,
+    repoUrl: 'https://github.com/tracycrossrvt-gif/mmac-hub',
     caseStudyPath: '/case-studies/mmac-hub',
     kind: 'systems/product',
     tags: ['Product strategy', 'Frontend engineering', 'Operations'],
