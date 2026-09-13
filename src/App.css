@@ -39,11 +39,21 @@
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   color: var(--bone);
   text-decoration: none;
   font-size: 0.96rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+.brand-mark {
+  display: block;
+  width: auto;
+  height: 1.4rem;
+  opacity: 0.85;
 }
 
 .site-nav {
@@ -281,6 +291,20 @@
   padding: 0.45rem 0.75rem;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.015);
+}
+
+.project-media-image {
+  min-height: 0;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.project-media-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .project-card-featured .project-media {

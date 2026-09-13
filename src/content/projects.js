@@ -25,8 +25,8 @@ export const projects = [
     previewBlurb:
       'A domain-heavy product effort centered on pattern recognition, clarity, and reducing effort across a fragmented workflow.',
     featured: false,
-    liveUrl: '#',
-    repoUrl: '#',
+    liveUrl: 'https://vet-iq-analytics.vercel.app/',
+    repoUrl: 'https://github.com/tracycrossrvt-gif/VetIQ-Analytics',
     caseStudyPath: null,
     kind: 'analytics/product',
     tags: ['Analytics', 'Product thinking', 'Systems design'],
@@ -41,8 +41,8 @@ export const projects = [
     previewBlurb:
       'A practical workflow product idea emphasizing speed, clarity, and front-end decision making in real operational settings.',
     featured: false,
-    liveUrl: '#',
-    repoUrl: '#',
+    liveUrl: 'https://taskflow-kanban-woad.vercel.app/',
+    repoUrl: 'https://github.com/tracycrossrvt-gif/taskflow-kanban',
     caseStudyPath: null,
     kind: 'workflow/frontend',
     tags: ['Workflow design', 'Frontend', 'UX clarity'],
@@ -57,8 +57,8 @@ export const projects = [
     previewBlurb:
       'A flexible project showing creative range, interface judgment, and the ability to build thoughtful interactions across technical layers.',
     featured: false,
-    liveUrl: '#',
-    repoUrl: '#',
+    liveUrl: 'https://streaming-clone-seven.vercel.app/',
+    repoUrl: 'https://github.com/tracycrossrvt-gif/streaming-clone',
     caseStudyPath: null,
     kind: 'creative engineering',
     tags: ['API work', 'Interaction design', 'Creative range'],

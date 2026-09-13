@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import mothmanLogoMain from '../../assets/media/mothman-logo-main.png'
 import { site } from '../../content/site'
 
 function SiteShell({ children }) {
@@ -11,7 +12,8 @@ function SiteShell({ children }) {
       <header className="site-header">
         <div className="container header-inner">
           <Link className="brand" to="/" aria-label="Home">
-            {site.name}
+            <img className="brand-mark" src={mothmanLogoMain} alt="" aria-hidden="true" />
+            <span>{site.name}</span>
           </Link>
 
           <nav className="site-nav" aria-label="Primary navigation">

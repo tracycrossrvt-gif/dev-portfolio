@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import coreWorkflowsMvp from '../../assets/media/mmac-core-workflows-mvp.png'
+import nocturneFeaturedHome from '../../assets/media/nocturne-featured-home.png'
+import taskflowKanbanBoard from '../../assets/media/taskflow-kanban-board.png'
+import vetiqPracticeHealthDashboard from '../../assets/media/vetiq-practice-health-dashboard.png'
 import winterFogVideo from '../../assets/media/winter-fog.mp4'
 import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
 import { projects } from '../../content/projects'
@@ -101,11 +104,7 @@ function HomePage() {
                       <a href={coreWorkflowsMvp}>View full-size workflow diagram</a>
                     </figcaption>
                   </figure>
-                ) : (
-                  <div className="project-media" aria-hidden="true">
-                    <span className="project-media-label">Media region</span>
-                  </div>
-                )}
+                ) : null}
                 <div className="project-body">
                   <p className="project-meta">{project.label}</p>
                   <h3>{project.title}</h3>
@@ -133,17 +132,46 @@ function HomePage() {
                 key={project.slug}
                 className={index === 0 ? 'project-card project-card-secondary' : 'project-card project-card-supporting'}
               >
-                <div className="project-media" aria-hidden="true">
-                  <span className="project-media-label">Media region</span>
-                </div>
+                {project.slug === 'vetiq' ? (
+                  <figure className="project-media project-media-image">
+                    <img
+                      src={vetiqPracticeHealthDashboard}
+                      loading="lazy"
+                      decoding="async"
+                      alt="Veterinary practice health dashboard showing KPIs, goal progress, and operational health indicators."
+                    />
+                  </figure>
+                ) : project.slug === 'taskflow' ? (
+                  <figure className="project-media project-media-image">
+                    <img
+                      src={taskflowKanbanBoard}
+                      loading="lazy"
+                      decoding="async"
+                      alt="Kanban board with To Do, In Progress, and Done columns containing draggable tasks."
+                    />
+                  </figure>
+                ) : project.slug === 'nocturne' ? (
+                  <figure className="project-media project-media-image">
+                    <img
+                      src={nocturneFeaturedHome}
+                      loading="lazy"
+                      decoding="async"
+                      alt="Horror streaming interface with a featured movie hero, search, navigation, and saved-list state."
+                    />
+                  </figure>
+                ) : null}
                 <div className="project-body">
                   <p className="project-meta">{project.label}</p>
                   <h3>{project.title}</h3>
                   <p>{project.previewBlurb}</p>
                 </div>
                 <div className="project-links">
-                  <a href={project.liveUrl}>Live project</a>
-                  <a href={project.repoUrl}>Repository</a>
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                    Live project
+                  </a>
+                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                    Repository
+                  </a>
                 </div>
               </article>
             ))}
