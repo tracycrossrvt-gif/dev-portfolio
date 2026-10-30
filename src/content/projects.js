@@ -3,7 +3,7 @@ export const projects = [
     slug: 'mmac-hub',
     title: 'MMAC Hub',
     label: 'Flagship systems/product work',
-    year: '2024',
+    year: '2026',
     summary:
       'A systems-focused product experience designed to bring clarity, structure, and operational visibility into a complex workflow.',
     previewBlurb:
@@ -19,7 +19,7 @@ export const projects = [
     slug: 'vetiq',
     title: 'VetIQ Analytics',
     label: 'Domain expertise + product thinking',
-    year: '2024',
+    year: '2026',
     summary:
       'An analytics-oriented product concept focused on turning noisy operational information into understandable, decision-ready insight.',
     previewBlurb:
@@ -35,7 +35,7 @@ export const projects = [
     slug: 'taskflow',
     title: 'TaskFlow',
     label: 'Workflow + frontend engineering',
-    year: '2023',
+    year: '2026',
     summary:
       'A workflow-centered interface concept built to make movement between tasks, context, and decisions more organized and less error-prone.',
     previewBlurb:
@@ -51,7 +51,7 @@ export const projects = [
     slug: 'nocturne',
     title: 'Nocturne',
     label: 'Craft, API work, interaction design',
-    year: '2023',
+    year: '2026',
     summary:
       'A craft-forward product exploration combining API work, interaction design, and creative range inside a coherent software experience.',
     previewBlurb:
