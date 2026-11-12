@@ -236,7 +236,7 @@ function HomePage() {
             </a>
             <a
               className="button-link"
-              href="/Tracy_Cross_Resume.pdf"
+              href={site.resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
             >

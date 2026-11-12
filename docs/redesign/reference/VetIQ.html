@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VetIQ Analytics project summary</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0B0C0F}
+a{color:#F2F2EF}a:hover{color:#E8B949}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){.rise{animation:none}}
+</style>
+</helmet>
+<div style="background: #0B0C0F; color: #F2F2EF; font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.65; min-height: 100vh">
+
+<header style="max-width: 1280px; margin: 0 auto; padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<a href="Main.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; text-decoration: none">TC<span style="color: {{accent}}">.</span></a>
+<a href="Main.dc.html" style="font-size: 15px; text-decoration: none; border: 1px solid rgba(242,242,239,0.3); padding: 10px 20px; border-radius: 999px">← All work</a>
+</header>
+
+<main style="max-width: 1280px; margin: 0 auto; padding: 0 40px">
+
+<section class="rise" style="padding: 96px 0 64px">
+<p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">VetIQ Analytics · Project summary</p>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(3rem, 7vw, 6rem); line-height: 0.98; letter-spacing: -0.035em; max-width: 15ch">Teaching new managers which numbers matter.</h1>
+<p style="margin: 32px 0 0; max-width: 62ch; font-size: 20px; color: #C9CCD2">A practice manager can open a dozen reports and still not know where to look. VetIQ puts the handful of numbers that run a hospital on one screen, with targets, a forecast and clear next steps. Amerivet now uses it to train new practice managers.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; font-weight: 600">
+<a href="https://vet-iq-analytics.vercel.app/" style="text-decoration: none; background: {{accent}}; color: #0B0C0F; padding: 16px 28px; border-radius: 999px">Try VetIQ ↗</a>
+<a href="https://github.com/tracycrossrvt-gif/VetIQ-Analytics" style="text-decoration: none; border: 1px solid rgba(242,242,239,0.3); padding: 15px 27px; border-radius: 999px">Repository ↗</a>
+</div>
+</section>
+
+<section aria-label="Project facts" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid rgba(242,242,239,0.12); border-bottom: 1px solid rgba(242,242,239,0.12)">
+<div style="padding: 28px 24px 28px 0"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Role</p><p style="margin: 0">Product owner, designer and developer</p></div>
+<div style="padding: 28px 24px"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Users</p><p style="margin: 0">New veterinary practice managers</p></div>
+<div style="padding: 28px 24px"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Adoption</p><p style="margin: 0">Training tool for new practice managers at Amerivet</p></div>
+<div style="padding: 28px 0 28px 24px"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Stack</p><p style="margin: 0">React · Vite · React Router · Recharts · Vercel</p></div>
+</section>
+
+<figure style="margin: 96px 0 0">
+<img src="../screenshots/vetiq-overview.png" alt="VetIQ Practice overview: a health score of 72 out of 100 marked Needs attention, above KPI cards for revenue, average client transaction, hourly labor, cost of goods, new clients and EBITDA margin" style="width: 100%; display: block; border-radius: 20px; border: 1px solid rgba(242,242,239,0.12)">
+<figcaption style="margin-top: 16px; font-size: 15px; color: #9DA1A9">The Practice overview. Every metric sits next to its target, and the health score says at a glance whether the month needs attention.</figcaption>
+</figure>
+
+<section style="padding: 128px 0 64px; display: flex; flex-wrap: wrap; gap: 64px">
+<div style="flex: 1 1 340px; min-width: 0">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">01 · The problem</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em">More data didn't mean more clarity.</h2>
+</div>
+<div style="flex: 1.4 1 520px; min-width: 0; color: #C9CCD2; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0">Running a hospital comes down to a few levers: revenue, average client transaction, labor, cost of goods and new clients. A new manager usually gets that information spread across reports, with no sense of which number to fix first.</p>
+<p style="margin: 0">I built VetIQ around the way I actually read a hospital's month: where are we against goal, where will we land, and what do we do about it this week.</p>
+</div>
+</section>
+
+<section style="padding: 64px 0">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">02 · Product decisions</p>
+<h2 style="margin: 0 0 48px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em; max-width: 18ch">Built to answer three questions in order.</h2>
+<div style="border-top: 1px solid rgba(242,242,239,0.12)">
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">01</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.15">How healthy is the month?</h3>
+<p style="margin: 0; color: #C9CCD2">One Practice Health Score, weighted across revenue, ACT, labor, COGS and client growth, so a new manager knows right away whether to dig in.</p>
+</div>
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">02</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.15">Where will we land?</h3>
+<p style="margin: 0; color: #C9CCD2">A month-end forecast based on business days elapsed shows projected revenue against goal, clearly labeled as an estimate, not booked revenue.</p>
+</div>
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">03</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.15">What do I do about it?</h3>
+<p style="margin: 0; color: #C9CCD2">"Where to focus" flags the metrics off target and pairs them with next steps, like reviewing unused appointment capacity or doctor production.</p>
+</div>
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">04</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.15">A safe place to practice</h3>
+<p style="margin: 0; color: #C9CCD2">The demo workspace uses sample data that trainees can edit, saved only in their browser, so they can test what-ifs without touching a real hospital's numbers.</p>
+</div>
+</div>
+</section>
+
+<section style="padding: 96px 0 144px; display: flex; flex-wrap: wrap; gap: 64px">
+<div style="flex: 1 1 340px; min-width: 0">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">03 · Inside the workspace</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em">One view for the month, deeper views when you need them.</h2>
+</div>
+<ul style="flex: 1.4 1 520px; min-width: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(242,242,239,0.12)">
+<li style="padding: 20px 0; border-bottom: 1px solid rgba(242,242,239,0.12); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap"><strong style="font-weight: 600">Overview</strong><span style="color: #9DA1A9">Health score, KPIs, forecast, focus areas</span></li>
+<li style="padding: 20px 0; border-bottom: 1px solid rgba(242,242,239,0.12); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap"><strong style="font-weight: 600">Revenue Intelligence</strong><span style="color: #9DA1A9">Revenue trends</span></li>
+<li style="padding: 20px 0; border-bottom: 1px solid rgba(242,242,239,0.12); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap"><strong style="font-weight: 600">Doctor Insights</strong><span style="color: #9DA1A9">Provider production</span></li>
+<li style="padding: 20px 0; border-bottom: 1px solid rgba(242,242,239,0.12); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap"><strong style="font-weight: 600">Client Growth</strong><span style="color: #9DA1A9">New-client acquisition</span></li>
+<li style="padding: 20px 0; border-bottom: 1px solid rgba(242,242,239,0.12); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap"><strong style="font-weight: 600">Cost &amp; Labor</strong><span style="color: #9DA1A9">Labor and COGS against targets</span></li>
+<li style="padding: 20px 0; border-bottom: 1px solid rgba(242,242,239,0.12); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap"><strong style="font-weight: 600">Data Entry</strong><span style="color: #9DA1A9">Update the month's figures</span></li>
+</ul>
+</section>
+
+</main>
+
+<footer style="border-top: 1px solid rgba(242,242,239,0.12)">
+<div style="max-width: 1280px; margin: 0 auto; padding: 48px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px">
+<a href="Main.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; text-decoration: none">← Back to all work</a>
+<a href="MMAC.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; text-decoration: none">Next: MMAC Hub →</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#E8B949","options":["#E8B949","#B6F36A","#6EA8FF","#E8E6E1"]},"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#E8B949' };
+}
+}
+</script>
+</body>
+</html>

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import mothmanLogoMain from '../../assets/media/mothman-logo-main.png'
 import { site } from '../../content/site'
 
 function SiteShell({ children }) {
@@ -10,38 +9,35 @@ function SiteShell({ children }) {
       </a>
 
       <header className="site-header">
-        <div className="container header-inner">
-          <Link className="brand" to="/" aria-label="Home">
-            <img className="brand-mark" src={mothmanLogoMain} alt="" aria-hidden="true" />
-            <span>{site.name}</span>
+        <nav className="site-nav" aria-label="Main">
+          <Link className="brand" to="/" aria-label={`${site.name}, home`}>
+            TC<span className="accent">.</span>
           </Link>
-
-          <nav className="site-nav" aria-label="Primary navigation">
-            {site.nav.map((item) => (
-              <Link key={item.to} to={item.to}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+          {site.nav.map((item) => (
+            <a key={item.href} className="nav-link" href={item.href}>
+              {item.label}
+            </a>
+          ))}
+          <a
+            className="btn btn-light"
+            href={site.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </a>
+        </nav>
       </header>
 
       <main id="main-content" className="site-main">
         {children}
       </main>
 
-      <footer className="site-footer">
-        <div className="container footer-inner">
-          <p>{site.title}</p>
-          <div className="footer-links">
-            <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
-            <a href={site.contact.github}>GitHub</a>
-            <a href={site.contact.linkedin}>LinkedIn</a>
-            <a href="/Tracy_Cross_Resume.pdf" target="_blank" rel="noopener noreferrer">
-              Resume
-            </a>
-          </div>
-        </div>
+      <footer className="container site-footer">
+        <span>
+          {site.name} · {site.title} · {site.location}
+        </span>
+        <span>© 2026</span>
       </footer>
     </div>
   )
