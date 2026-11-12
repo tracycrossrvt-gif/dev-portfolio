@@ -1,251 +1,282 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import coreWorkflowsMvp from '../../assets/media/mmac-core-workflows-mvp.png'
-import nocturneFeaturedHome from '../../assets/media/nocturne-featured-home.png'
-import taskflowKanbanBoard from '../../assets/media/taskflow-kanban-board.png'
-import vetiqPracticeHealthDashboard from '../../assets/media/vetiq-practice-health-dashboard.png'
+import { useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import winterFogVideo from '../../assets/media/winter-fog.mp4'
 import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
-import { projects } from '../../content/legacyProjects'
+import stormVideo from '../../assets/media/about-western-nc-storm.mp4'
+import stormPoster from '../../assets/media/about-western-nc-storm-poster.jpg'
+import { home } from '../../content/home'
+import { projects } from '../../content/projects'
 import { site } from '../../content/site'
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 
-function HomePage() {
-  const featuredProjects = projects.filter((project) => project.featured)
-  const secondaryProjects = projects.filter((project) => !project.featured)
-  const howIBuild = [
-    'I start by understanding the whole system, not just the symptom.',
-    'I look for the friction: the bottlenecks, the duplicated work, the unclear handoffs, the places where people have to improvise.',
-    'Then I model what actually needs to happen so the solution matches the real workflow, not a theoretical one.',
-    'I build the smallest useful thing that removes the friction and gives people clarity.',
-    'I test it against reality, because operational systems are always messier than they first appear.',
-    'I refine it until the work feels easier, clearer, and more humane.',
-  ]
-  const aboutPreview = [
-    'My background has always been rooted in operations, decision-making, and the realities of complex systems.',
-    'Over nearly two decades working inside complex operational environments, I learned to see people, workflows, dependencies, bottlenecks, constraints, and downstream consequences.',
-    'That perspective is why I approach software the way I do: not just as a set of features, but as a system that supports real work and reduces friction.',
-  ]
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+const pad = (n) => String(n).padStart(2, '0')
+
+// Hero background: plays straight away unless the visitor prefers reduced motion,
+// in which case the poster image stays on screen.
+function HeroVideo() {
+  const ref = useRef(null)
+  const reduced = usePrefersReducedMotion()
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-
-    const updatePreference = () => {
-      setPrefersReducedMotion(mediaQuery.matches)
-    }
-
-    updatePreference()
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', updatePreference)
-
-      return () => {
-        mediaQuery.removeEventListener('change', updatePreference)
-      }
-    }
-
-    mediaQuery.addListener(updatePreference)
-
-    return () => {
-      mediaQuery.removeListener(updatePreference)
-    }
-  }, [])
+    const video = ref.current
+    if (!video) return
+    video.muted = true
+    if (reduced) video.pause()
+    else video.play().catch(() => {})
+  }, [reduced])
 
   return (
-    <>
-      <section className="page-section hero-section">
-        <div className="container hero-stage">
-          <div className="hero-copy">
-            <p className="eyebrow">Systems thinking / product judgment / frontend craft</p>
-            <h1>{site.title}</h1>
-            <p className="lead">{site.thesis}</p>
-          </div>
+    <video
+      ref={ref}
+      className="bg-video"
+      src={winterFogVideo}
+      poster={winterFogPoster}
+      autoPlay={!reduced}
+      muted
+      loop
+      playsInline
+      aria-hidden="true"
+      tabIndex={-1}
+    />
+  )
+}
 
-          <div className="hero-media" aria-hidden="true">
-            {prefersReducedMotion ? (
-              <img src={winterFogPoster} alt="" />
-            ) : (
-              <video
-                src={winterFogVideo}
-                poster={winterFogPoster}
-                autoPlay
-                loop
-                muted
-                playsInline
-              />
-            )}
-          </div>
-        </div>
-      </section>
+// Contact background: a 6 MB file, so nothing loads until the section is near
+// the viewport. It plays while visible. Under reduced motion it never loads and
+// the poster stays on screen.
+function ContactVideo({ sectionRef }) {
+  const ref = useRef(null)
+  const reduced = usePrefersReducedMotion()
 
-      <section className="page-section">
-        <div className="container">
-          <div className="section-intro">
-            <p className="eyebrow">Selected work</p>
-            <h2>Systems, workflows, and product judgment.</h2>
-          </div>
+  useEffect(() => {
+    const video = ref.current
+    const section = sectionRef.current
+    if (!video || !section) return
+    video.muted = true
+    if (reduced) {
+      video.pause()
+      return
+    }
 
-          <div className="project-grid">
-            {featuredProjects.map((project) => (
-              <article key={project.slug} className="project-card project-card-featured">
-                {project.slug === 'mmac-hub' ? (
-                  <figure className="mmac-evidence-preview">
-                    <img
-                      src={coreWorkflowsMvp}
-                      width="1536"
-                      height="1024"
-                      loading="lazy"
-                      decoding="async"
-                      alt="MMAC workflow diagram: Get Help, Vaccine Clinics, and Volunteer & Donate connect to shared operational data."
-                    />
-                    <figcaption>
-                      <strong>Workflow design · In development</strong>
-                      <span>Three public paths, with administrator review and shared data underneath.</span>
-                      <a href={coreWorkflowsMvp}>View full-size workflow diagram</a>
-                    </figcaption>
-                  </figure>
-                ) : null}
-                <div className="project-body">
-                  <p className="project-meta">{project.label}</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.previewBlurb}</p>
-                </div>
-                <div className="project-links">
-                  {project.caseStudyPath ? (
-                    <Link to={project.caseStudyPath}>Read case study</Link>
-                  ) : (
-                    <a href={project.liveUrl}>Live project</a>
-                  )}
-                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                    Repository
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.preload = 'auto'
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { rootMargin: '200px 0px' },
+    )
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [reduced, sectionRef])
 
-      <section className="page-section">
-        <div className="container">
-          <div className="project-grid secondary-grid">
-            {secondaryProjects.map((project, index) => (
-              <article
-                key={project.slug}
-                className={index === 0 ? 'project-card project-card-secondary' : 'project-card project-card-supporting'}
-              >
-                {project.slug === 'vetiq' ? (
-                  <figure className="project-media project-media-image">
-                    <img
-                      src={vetiqPracticeHealthDashboard}
-                      loading="lazy"
-                      decoding="async"
-                      alt="Veterinary practice health dashboard showing KPIs, goal progress, and operational health indicators."
-                    />
-                  </figure>
-                ) : project.slug === 'taskflow' ? (
-                  <figure className="project-media project-media-image">
-                    <img
-                      src={taskflowKanbanBoard}
-                      loading="lazy"
-                      decoding="async"
-                      alt="Kanban board with To Do, In Progress, and Done columns containing draggable tasks."
-                    />
-                  </figure>
-                ) : project.slug === 'nocturne' ? (
-                  <figure className="project-media project-media-image">
-                    <img
-                      src={nocturneFeaturedHome}
-                      loading="lazy"
-                      decoding="async"
-                      alt="Horror streaming interface with a featured movie hero, search, navigation, and saved-list state."
-                    />
-                  </figure>
-                ) : null}
-                <div className="project-body">
-                  <p className="project-meta">{project.label}</p>
-                  <h3>{project.title}</h3>
-                  <p>{project.previewBlurb}</p>
-                </div>
-                <div className="project-links">
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                    Live project
-                  </a>
-                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                    Repository
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+  return (
+    <video
+      ref={ref}
+      className="bg-video"
+      src={stormVideo}
+      poster={stormPoster}
+      preload="none"
+      muted
+      loop
+      playsInline
+      aria-hidden="true"
+      tabIndex={-1}
+    />
+  )
+}
 
-      <section className="page-section">
-        <div className="container">
-          <div className="section-intro">
-            <p className="eyebrow">How I build</p>
-            <h2>I look for the friction, then I shape the system around it.</h2>
-          </div>
-
-          <ol className="list-plain">
-            {howIBuild.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
-          <div className="section-intro">
-            <p className="eyebrow">About</p>
-            <h2>Why I think this way.</h2>
-          </div>
-
-          <div className="text-stack">
-            {aboutPreview.map((item) => (
-              <p key={item}>{item}</p>
-            ))}
-          </div>
-
-          <div className="cta-row">
-            <Link className="button-link" to="/about">
-              Read full bio
+function ProjectCard({ project, index }) {
+  return (
+    <article className="work-card">
+      <div className="work-card-text">
+        <p className="work-card-meta">
+          {pad(index + 1)} / {pad(projects.length)} ·{' '}
+          <span className="accent">{project.status}</span>
+        </p>
+        <h3>{project.title}</h3>
+        <p className="work-card-oneliner">{project.oneLiner}</p>
+        <ul className="work-card-bullets">
+          {project.bullets.map((bullet) => (
+            <li key={bullet}>{bullet}</li>
+          ))}
+        </ul>
+        <ul className="tag-list" aria-label="Skills">
+          {project.tags.map((tag) => (
+            <li key={tag}>{tag}</li>
+          ))}
+        </ul>
+        <div className="work-card-links">
+          {project.detailPath ? (
+            <Link className="btn btn-accent btn-sm" to={project.detailPath}>
+              {project.detailLabel}
             </Link>
+          ) : null}
+          <a
+            className={project.detailPath ? 'text-link' : 'btn btn-accent btn-sm'}
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {home.work.liveLabel}
+          </a>
+          <a className="text-link" href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+            {home.work.repoLabel}
+          </a>
+        </div>
+      </div>
+      <img
+        className="work-card-shot"
+        src={project.screenshot}
+        alt={project.screenshotAlt}
+        loading={index === 0 ? 'eager' : 'lazy'}
+        decoding="async"
+      />
+    </article>
+  )
+}
+
+function HomePage() {
+  const { hash } = useLocation()
+  const contactRef = useRef(null)
+  const { hero, trackRecord, ticker, work, approach, background, contact } = home
+
+  // Arriving from another page via /#section: scroll once the section exists.
+  useEffect(() => {
+    if (!hash) return
+    document.getElementById(hash.slice(1))?.scrollIntoView()
+  }, [hash])
+
+  return (
+    <div className="home">
+      <section className="home-hero">
+        <HeroVideo />
+        <div className="bg-overlay" aria-hidden="true" />
+        <div className="container home-hero-inner">
+          <p className="home-hero-label">{hero.label}</p>
+          <h1>
+            {hero.title}
+            <span className="accent">.</span>
+          </h1>
+          <div className="home-hero-bottom">
+            <p className="lead">{hero.lead}</p>
+            <div className="btn-row">
+              <a className="btn btn-accent" href={hero.primary.href}>
+                {hero.primary.label}
+              </a>
+              <a className="btn btn-outline" href={hero.secondary.href}>
+                {hero.secondary.label}
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="page-section">
-        <div className="container">
-          <div className="section-intro">
-            <p className="eyebrow">Contact</p>
-            <h2>Let’s build something that makes people’s lives easier.</h2>
-          </div>
+      <div className="container">
+        <section className="track-record" aria-label="Track record">
+          {trackRecord.map((item) => (
+            <div key={item.value} className="track-record-item">
+              <p className="track-record-value">{item.value}</p>
+              <p className="track-record-text">{item.text}</p>
+            </div>
+          ))}
+        </section>
+      </div>
 
-          <div className="cta-row footer-links">
-            <a className="button-link" href={`mailto:${site.contact.email}`}>
-              Email
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker-track">
+          {ticker.map((item) => (
+            <span key={item} className="ticker-item">
+              <span>{item}</span>
+              <span className="accent">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <section id="work" className="container home-section work-section">
+        <p className="section-label">{work.label}</p>
+        <h2 className="work-heading">{work.heading}</h2>
+        <div className="work-stack">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </div>
+      </section>
+
+      <section id="approach" className="container home-section approach-section">
+        <div className="approach-head">
+          <div>
+            <p className="section-label">{approach.label}</p>
+            <h2>{approach.heading}</h2>
+          </div>
+          <p className="approach-intro">{approach.intro}</p>
+        </div>
+        <div className="numbered-rows">
+          {approach.rows.map((row, index) => (
+            <div key={row.title} className="numbered-row">
+              <p className="numbered-row-num">{pad(index + 1)}</p>
+              <h3>{row.title}</h3>
+              <div>
+                <p className="numbered-row-body">{row.body}</p>
+                <p className="numbered-row-tags">{row.tags}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="background" className="container home-section background-section">
+        <div className="background-intro">
+          <p className="section-label">{background.label}</p>
+          <h2>{background.heading}</h2>
+          <p>{background.intro}</p>
+        </div>
+        <ol className="timeline">
+          {background.timeline.map((item) => (
+            <li key={item.when}>
+              <span className={item.upcoming ? 'timeline-when accent' : 'timeline-when'}>
+                {item.when}
+              </span>
+              <span>
+                <strong>{item.title}</strong> <span className="timeline-text">{item.text}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="contact" className="contact-section" ref={contactRef}>
+        <ContactVideo sectionRef={contactRef} />
+        <div className="bg-overlay" aria-hidden="true" />
+        <div className="container contact-inner">
+          <p className="section-label">{contact.label}</p>
+          <h2 className="contact-heading">
+            {contact.heading}
+            <span className="accent">.</span>
+          </h2>
+          <div className="btn-row">
+            <a className="btn btn-accent" href={`mailto:${site.contact.email}`}>
+              {site.contact.email}
             </a>
-            <a className="button-link" href={site.contact.github}>
-              GitHub
-            </a>
-            <a className="button-link" href={site.contact.linkedin}>
-              LinkedIn
-            </a>
-            <a
-              className="button-link"
-              href={site.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Resume
-            </a>
+            {contact.links.map((link) => (
+              <a
+                key={link.label}
+                className="btn btn-outline"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
 

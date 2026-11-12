@@ -23,6 +23,7 @@ Put these in `src/index.css` as CSS custom properties, and use only these values
 | `--bg` | `#0B0C0F` | page background |
 | `--surface-1` … `--surface-4` | `#15171C`, `#17191F`, `#191B22`, `#1B1D24` | cards; the four stacked project cards step lighter in this order |
 | `--line` | `rgba(242,242,239,0.12)` | borders, dividers |
+| `--line-soft` | `rgba(242,242,239,0.2)` | tag pill borders |
 | `--line-strong` | `rgba(242,242,239,0.3)` | outline buttons |
 | `--text` | `#F2F2EF` | headings, primary text |
 | `--text-2` | `#C9CCD2` | body copy |
@@ -92,6 +93,7 @@ Build `HomePage.jsx` from `Main.html`, section by section:
 7. **Contact.** A big H2, a gold email button that shows `tracycrossrvt@gmail.com` and links to `mailto:`, and outline LinkedIn, GitHub and Resume buttons.
    - Background: `src/assets/media/about-western-nc-storm.mp4` with the same overlay as the hero, `aria-hidden="true"`.
    - The file is 6 MB, so use `preload="none"` and only load and play it when the section scrolls into view.
+   - Poster: `about-western-nc-storm-poster.jpg`, the video's first frame (1280×720, 37 KB).
 8. **Reduced motion.** Under `prefers-reduced-motion: reduce`, neither video plays. Show the poster or a still frame instead.
 
 **Done when:** the page matches `Main.html` at 1440px, works at 375px and 768px, and every anchor link in the nav scrolls to its section.
@@ -145,7 +147,7 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
   - TaskFlow board
 - Save them in `src/assets/media/` with these names: `mmac-home.png`, `vetboard-question.png`, `vetboard-answer.png`, `vetiq-overview.png`, `taskflow-board.png`.
 - If you can't capture screenshots yourself, ask Tracy to take them.
-- Delete media that's no longer used: the Nocturne images, `hero.png`, `react.svg`, `vite.svg`, and the duplicate `winter-fog-poster-final.jpg`. Keep `mothman-logo-main.png` (the favicon) and `winter-fog.mp4`, `winter-fog-poster.jpg` and `about-western-nc-storm.mp4` (the homepage background videos). **List the files and confirm with Tracy before deleting anything.**
+- Delete media that's no longer used: the Nocturne images, `hero.png`, `react.svg`, `vite.svg`, and the duplicate `winter-fog-poster-final.jpg`. Keep `mothman-logo-main.png` (the favicon) and `winter-fog.mp4`, `winter-fog-poster.jpg`, `about-western-nc-storm.mp4` and `about-western-nc-storm-poster.jpg` (the homepage background videos and their posters). **List the files and confirm with Tracy before deleting anything.**
 
 ### Phase 9: QA and handoff
 - Check every page at 375, 768 and 1440px. Nothing should overflow horizontally.
@@ -170,3 +172,7 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
 - ~~The two diagram captions in `mmac.js` reuse sentences from the current MMAC page's captions. OK as is? (Phase 2)~~ **Resolved:** reused captions are fine.
 - ~~Phase 4 lists screenshots after the decisions rows, but the references place them differently. Keep each reference's order? (Phase 2)~~ **Resolved:** follow each reference page's order; Phase 4 updated.
 - ~~I added a `detailLabel` field to `projects.js` ("Read case study" / "Read summary"). (Phase 2)~~ **Resolved:** keep it.
+- ~~Over the videos, two small labels fail 4.5:1 with the specified overlay (hero label about 2.1:1, gold contact label about 3.1:1). Keep them in `--text`? (Phase 3)~~ **Resolved:** keep both labels in `--text` over the videos.
+- ~~Project cards only stack (sticky) at 1120×760 and up, since a taller stacked card would be half covered on phones. OK? (Phase 3)~~ **Resolved:** agreed.
+- ~~`about-western-nc-storm.mp4` has no poster image. Export one? (Phase 3)~~ **Resolved:** exported the first frame as `about-western-nc-storm-poster.jpg` (37 KB) and used it as the contact poster. Under reduced motion the video never loads.
+- ~~Tag pills in `Main.html` use a `rgba(242,242,239,0.2)` border, which isn't a token. (Phase 3)~~ **Resolved:** added `--line-soft` for tag borders.
