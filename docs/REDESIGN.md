@@ -167,7 +167,7 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
 
 (Add anything you're unsure about here instead of guessing.)
 
-- Should `AboutPage.jsx` and `about.js` be deleted, or rewritten to fit the new positioning? (Phase 6)
+- ~~Should `AboutPage.jsx` and `about.js` be deleted, or rewritten to fit the new positioning? (Phase 6)~~ **Resolved:** deleted (git history keeps them). `/about` redirects to `/#background`, and the About-only CSS is gone too.
 - ~~`public/Tracy_Cross_Resume.pdf` is no longer linked anywhere. Delete the file, or keep it? (Phase 1)~~ **Resolved:** deleted.
 - ~~`Main.html` links LinkedIn as `https://www.linkedin.com/in/tracy-cross-02b827370`, but `site.js` still has the URL with `utm_*` tracking parameters. Switch to the clean URL? (Phase 1)~~ **Resolved:** `site.js` now uses the clean URL.
 - ~~The favicon in `index.html` is still `mothman-logo-main.png`, which Phase 8 deletes. What should replace it? (Phase 1)~~ **Resolved:** keep the mothman image as the favicon; it's removed from the Phase 8 deletion list.
