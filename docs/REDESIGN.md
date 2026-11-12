@@ -79,6 +79,8 @@ Put these in `src/index.css` as CSS custom properties, and use only these values
 ### Phase 3: Homepage
 Build `HomePage.jsx` from `Main.html`, section by section:
 1. **Hero.** Mono label, H1 with a gold period, lead paragraph, two buttons (gold "See the work" and an outline "Get in touch").
+   - Background: `src/assets/media/winter-fog.mp4` as a full-bleed background video (`autoplay`, `muted`, `loop`, `playsInline`, `poster` = `winter-fog-poster.jpg`), `aria-hidden="true"`.
+   - A dark overlay over the video, `rgba(11,12,15,0.55)` fading to `rgba(11,12,15,0.9)` at the bottom, so text keeps 4.5:1 contrast.
 2. **Track record strip.** Four columns divided by `--line`: 15+, 2→12, 200+, 4. On phones it becomes 2×2.
 3. **Skills ticker.** A full-bleed band with a gold ✦ between items. Mark it `aria-hidden="true"`, since it's decorative.
 4. **Selected work.** Label, H2, then the four project cards.
@@ -88,6 +90,9 @@ Build `HomePage.jsx` from `Main.html`, section by section:
 5. **What I do.** Six numbered rows (`01`–`06`) in a 3-column grid (number, title, description plus mono tags). On phones it becomes one column.
 6. **Background.** Intro on the left, a dated timeline `<ol>` on the right: 2010–2016, 2018–present, 2025, BBA · MBA, 2026, Jan 2027 →.
 7. **Contact.** A big H2, a gold email button that shows `tracycrossrvt@gmail.com` and links to `mailto:`, and outline LinkedIn, GitHub and Resume buttons.
+   - Background: `src/assets/media/about-western-nc-storm.mp4` with the same overlay as the hero, `aria-hidden="true"`.
+   - The file is 6 MB, so use `preload="none"` and only load and play it when the section scrolls into view.
+8. **Reduced motion.** Under `prefers-reduced-motion: reduce`, neither video plays. Show the poster or a still frame instead.
 
 **Done when:** the page matches `Main.html` at 1440px, works at 375px and 768px, and every anchor link in the nav scrolls to its section.
 
@@ -101,8 +106,8 @@ Build `HomePage.jsx` from `Main.html`, section by section:
   - 4-column facts strip (Role, Users, Adoption, Stack), which wraps on phones
   - Problem: a two-column heading and body
   - Numbered decisions rows
-  - Screenshot(s) with captions
   - A closing list section
+- Screenshot(s) with captions follow each reference page's own order, which the content file's ordered `sections` array already records: `VetIQ.html` shows its screenshot right after the facts strip, and `VetBoard.html` shows its screenshots after the decisions rows.
   - Footer with "Back to all work" and "Next: …" links
 - Next-link order: VetBoard → VetIQ → MMAC → VetBoard.
 
@@ -110,7 +115,7 @@ Build `HomePage.jsx` from `Main.html`, section by section:
 
 ### Phase 5: MMAC case study
 - Rebuild `MmacCaseStudyPage.jsx` at the **same URL** (`/case-studies/mmac-hub`) from `MMAC.html`.
-- **Keep the two existing diagrams.** Show `mmac-assistance-intake-schema.png` in section 04 (The foundation), below the table-name tags, and `mmac-core-workflows-mvp.png` in section 05 (What shipped), above the three cards. Each gets a `<figure>` with a short caption saying what the diagram shows. Keep their existing alt text.
+- **Keep the two existing diagrams.** Show `mmac-assistance-intake-schema.png` in section 04 (The foundation), below the table-name tags, and `mmac-core-workflows-mvp.png` in section 06 (What's next), above the Now / Next / Then timeline. Keep its "Planned workflows, not shipped interfaces." caption. Each gets a `<figure>` with a short caption saying what the diagram shows. Keep their existing alt text.
 - The four user cards use `repeat(auto-fit, minmax(240px, 1fr))` so long titles never overflow. This was a bug on the canvas; don't bring it back.
 - The "What's next" timeline (Now / Next / Then) stacks on phones.
 
@@ -140,7 +145,7 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
   - TaskFlow board
 - Save them in `src/assets/media/` with these names: `mmac-home.png`, `vetboard-question.png`, `vetboard-answer.png`, `vetiq-overview.png`, `taskflow-board.png`.
 - If you can't capture screenshots yourself, ask Tracy to take them.
-- Delete media that's no longer used: the Nocturne images, `hero.png`, `react.svg`, `vite.svg`, and the winter-fog files. Keep `mothman-logo-main.png`: it stays as the favicon. **List the files and confirm with Tracy before deleting anything.**
+- Delete media that's no longer used: the Nocturne images, `hero.png`, `react.svg`, `vite.svg`, and the duplicate `winter-fog-poster-final.jpg`. Keep `mothman-logo-main.png` (the favicon) and `winter-fog.mp4`, `winter-fog-poster.jpg` and `about-western-nc-storm.mp4` (the homepage background videos). **List the files and confirm with Tracy before deleting anything.**
 
 ### Phase 9: QA and handoff
 - Check every page at 375, 768 and 1440px. Nothing should overflow horizontally.
@@ -161,3 +166,7 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
 - ~~`public/Tracy_Cross_Resume.pdf` is no longer linked anywhere. Delete the file, or keep it? (Phase 1)~~ **Resolved:** deleted.
 - ~~`Main.html` links LinkedIn as `https://www.linkedin.com/in/tracy-cross-02b827370`, but `site.js` still has the URL with `utm_*` tracking parameters. Switch to the clean URL? (Phase 1)~~ **Resolved:** `site.js` now uses the clean URL.
 - ~~The favicon in `index.html` is still `mothman-logo-main.png`, which Phase 8 deletes. What should replace it? (Phase 1)~~ **Resolved:** keep the mothman image as the favicon; it's removed from the Phase 8 deletion list.
+- ~~Phase 5 puts `mmac-core-workflows-mvp.png` in section 05 "What shipped", but the current page says that diagram shows planned workflows. Should the diagram move? (Phase 2)~~ **Resolved:** moved to section 06 "What's next", above the timeline, keeping the "Planned workflows, not shipped interfaces." caption.
+- ~~The two diagram captions in `mmac.js` reuse sentences from the current MMAC page's captions. OK as is? (Phase 2)~~ **Resolved:** reused captions are fine.
+- ~~Phase 4 lists screenshots after the decisions rows, but the references place them differently. Keep each reference's order? (Phase 2)~~ **Resolved:** follow each reference page's order; Phase 4 updated.
+- ~~I added a `detailLabel` field to `projects.js` ("Read case study" / "Read summary"). (Phase 2)~~ **Resolved:** keep it.

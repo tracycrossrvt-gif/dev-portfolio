@@ -1,4 +1,4 @@
-import { projects } from '../../content/projects'
+import { projects } from '../../content/legacyProjects'
 import assistanceIntakeSchema from '../../assets/media/mmac-assistance-intake-schema.png'
 import coreWorkflowsMvp from '../../assets/media/mmac-core-workflows-mvp.png'
 

@@ -6,7 +6,7 @@ import taskflowKanbanBoard from '../../assets/media/taskflow-kanban-board.png'
 import vetiqPracticeHealthDashboard from '../../assets/media/vetiq-practice-health-dashboard.png'
 import winterFogVideo from '../../assets/media/winter-fog.mp4'
 import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
-import { projects } from '../../content/projects'
+import { projects } from '../../content/legacyProjects'
 import { site } from '../../content/site'
 
 function HomePage() {
