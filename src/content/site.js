@@ -17,6 +17,7 @@ export const site = {
     backLabel: '← All work',
     footerBackLabel: '← Back to all work',
     nextLabel: (title) => `Next: ${title} →`,
+    fullSizeLabel: 'View full size',
   },
   contact: {
     email: 'tracycrossrvt@gmail.com',

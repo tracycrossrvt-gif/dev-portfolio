@@ -364,6 +364,7 @@
   min-width: 0;
   width: 100%;
   max-width: 640px;
+  height: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius-img);
 }
@@ -614,7 +615,7 @@
   }
 }
 
-/* ---------- Project summary pages (VetBoard, VetIQ) ---------- */
+/* ---------- Project pages (VetBoard, VetIQ, MMAC) ---------- */
 
 .project-summary {
   line-height: 1.65;
@@ -693,16 +694,37 @@
   color: var(--text);
 }
 
-.ps-section h2 {
+/* Section spacing by position (see spacingClass in ProjectSummaryPage). */
+.ps-pad-first {
+  padding: 128px 0 64px;
+}
+
+.ps-pad-second {
+  padding: 64px 0;
+}
+
+.ps-pad-rest {
+  padding: 96px 0 64px;
+}
+
+.ps-pad-last {
+  padding-bottom: 144px;
+}
+
+.project-summary h2 {
   font-size: clamp(2.25rem, 4vw, 3.5rem);
   line-height: 1.02;
+}
+
+/* Section headings with content underneath (not the two-column ones). */
+.project-summary section:not(.ps-split) > h2 {
+  margin-bottom: 48px;
 }
 
 .ps-split {
   display: flex;
   flex-wrap: wrap;
   gap: 64px;
-  padding: 128px 0 64px;
 }
 
 .ps-split-head {
@@ -722,17 +744,8 @@
   gap: 20px;
 }
 
-.ps-rows {
-  padding: 64px 0;
-}
-
-.ps-rows h2,
-.ps-figures h2 {
-  margin-bottom: 48px;
-}
-
-.ps-heading-narrow {
-  max-width: 18ch;
+.tag-list-roomy li {
+  padding: 6px 14px;
 }
 
 .ps-row-list {
@@ -758,10 +771,6 @@
   letter-spacing: normal;
 }
 
-.ps-figures {
-  padding: 96px 0 64px;
-}
-
 .ps-figure-row {
   display: flex;
   flex-wrap: wrap;
@@ -775,6 +784,7 @@
 
 .ps-figure img {
   width: 100%;
+  height: auto;
   border: 1px solid var(--line);
   border-radius: var(--radius-img);
 }
@@ -785,16 +795,21 @@
   color: var(--muted);
 }
 
+.ps-figure-full {
+  display: block;
+  width: fit-content;
+  margin-top: 2px;
+  padding-block: 10px;
+  color: var(--text-2);
+  text-underline-offset: 0.2em;
+}
+
 .ps-lead-figure {
   margin-top: 96px;
 }
 
 .ps-lead-figure .ps-figure img {
   border-radius: var(--radius-card-sm);
-}
-
-.ps-list {
-  padding: 96px 0 144px;
 }
 
 .ps-list-items {
@@ -819,6 +834,98 @@
 
 .ps-list-items span {
   color: var(--muted);
+}
+
+/* Small cards. Auto-fit columns so long titles never overflow. */
+.ps-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.ps-cards-numbered {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.ps-card {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card-sm);
+  background: var(--surface-1);
+}
+
+.ps-cards-numbered .ps-card {
+  padding: 28px;
+}
+
+.ps-card-num {
+  margin-bottom: 12px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+}
+
+.ps-card h3 {
+  margin-bottom: 12px;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: normal;
+  overflow-wrap: break-word;
+}
+
+.ps-card p:last-child {
+  font-size: 15px;
+}
+
+.ps-cards-note {
+  max-width: 70ch;
+  margin-top: 32px;
+}
+
+.ps-timeline-figure {
+  margin-bottom: 48px;
+}
+
+.ps-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--accent);
+}
+
+.ps-timeline li {
+  padding: 28px 24px 0;
+}
+
+.ps-timeline li:first-child {
+  padding-left: 0;
+}
+
+.ps-timeline li:last-child {
+  padding-right: 0;
+}
+
+.ps-timeline-when {
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.ps-timeline-when.accent {
+  color: var(--accent);
+}
+
+.ps-timeline h3 {
+  margin-bottom: 8px;
+  font-size: 24px;
+  line-height: 1.65;
+  letter-spacing: normal;
+}
+
+.ps-timeline p:last-child {
+  font-size: 15px;
 }
 
 .ps-footer {
@@ -849,6 +956,17 @@
 
   .ps-row h3 {
     font-size: 24px;
+  }
+
+  /* Now / Next / Then stack. */
+  .ps-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .ps-timeline li,
+  .ps-timeline li:first-child,
+  .ps-timeline li:last-child {
+    padding: 24px 0 0;
   }
 }
 
@@ -892,22 +1010,28 @@
     border-bottom: 1px solid var(--line);
   }
 
-  .ps-split {
-    gap: 28px;
+  .ps-pad-first {
     padding: 64px 0 32px;
   }
 
-  .ps-rows {
+  .ps-pad-second {
     padding: 32px 0;
   }
 
-  .ps-rows h2,
-  .ps-figures h2 {
-    margin-bottom: 28px;
+  .ps-pad-rest {
+    padding: 48px 0 32px;
   }
 
-  .ps-figures {
-    padding: 48px 0 32px;
+  .ps-pad-last {
+    padding-bottom: 72px;
+  }
+
+  .ps-split {
+    gap: 28px;
+  }
+
+  .project-summary section:not(.ps-split) > h2 {
+    margin-bottom: 28px;
   }
 
   .ps-figure-row {
@@ -918,8 +1042,13 @@
     margin-top: 48px;
   }
 
-  .ps-list {
-    padding: 48px 0 72px;
+  .ps-card,
+  .ps-cards-numbered .ps-card {
+    padding: 24px;
+  }
+
+  .ps-timeline-figure {
+    margin-bottom: 28px;
   }
 
   .ps-footer-inner {
@@ -931,7 +1060,7 @@
   }
 }
 
-/* ---------- About and MMAC page styles (replaced in Phases 5–6) ---------- */
+/* ---------- About page styles (replaced in Phase 6) ---------- */
 
 .page-section {
   padding: 96px 0;
@@ -989,7 +1118,6 @@
   color: var(--accent);
 }
 
-.case-study-figure img,
 .about-video {
   width: 100%;
   height: auto;
@@ -998,7 +1126,6 @@
   background: var(--surface-1);
 }
 
-.project-links,
 .cta-row {
   display: flex;
   flex-wrap: wrap;
@@ -1009,7 +1136,6 @@
   margin-top: 32px;
 }
 
-.project-links a,
 .button-link {
   display: inline-flex;
   align-items: center;
@@ -1020,28 +1146,15 @@
   text-decoration: none;
 }
 
-.project-links a:hover,
 .button-link:hover {
   border-color: var(--accent);
 }
 
-.info-block,
 .about-section,
 .about-video-block {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--line);
-}
-
-.info-block h2 {
-  font-size: 28px;
-  margin-bottom: 16px;
-}
-
-.info-block p + p,
-.info-block p + ul,
-.info-block ul + p {
-  margin-top: 12px;
 }
 
 .about-intro,
@@ -1075,26 +1188,6 @@
   max-height: 28rem;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-}
-
-.case-study-figure {
-  margin-top: 32px;
-  min-width: 0;
-}
-
-.case-study-figure figcaption {
-  margin-top: 14px;
-  font-size: 15px;
-  color: var(--muted);
-}
-
-.case-study-figure figcaption strong {
-  color: var(--text);
-}
-
-.evidence-note {
-  display: block;
-  margin-top: 12px;
 }
 
 @media (max-width: 760px) {

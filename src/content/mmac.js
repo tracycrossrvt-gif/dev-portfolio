@@ -1,16 +1,19 @@
-import assistanceIntakeSchema from '../assets/media/mmac-assistance-intake-schema.png'
-import coreWorkflowsMvp from '../assets/media/mmac-core-workflows-mvp.png'
+// The diagrams show as WebP (about 170 KB each). The original PNGs live in
+// public/diagrams/ and open from the "View full size" link under each figure.
+import assistanceIntakeSchema from '../assets/media/mmac-assistance-intake-schema.webp'
+import coreWorkflowsMvp from '../assets/media/mmac-core-workflows-mvp.webp'
 import { screenshots } from './screenshots'
 
 // /case-studies/mmac-hub. Copy is verbatim from docs/redesign/reference/MMAC.html.
-// The two diagrams keep the alt text from the current MmacCaseStudyPage; their
-// captions reuse sentences from that page\'s existing figure captions.
+// The two diagrams keep the alt text from the original MMAC page; their
+// captions reuse sentences from that page's figure captions.
 // `sections` is listed in page order; each `type` maps to one layout block.
 export const mmac = {
   slug: 'mmac-hub',
   path: '/case-studies/mmac-hub',
   label: 'MMAC Hub · Case study',
   title: 'They asked for a website. They needed a system.',
+  titleMaxWidth: '16ch',
   lead: 'Macon Moves Animal Care helps families get affordable veterinary care in Macon, Jackson and Rabun Counties. As it grew across partner hospitals, volunteers, clinics and assistance programs, it needed a way to coordinate the work behind the website.',
   actions: [
     { label: 'Visit live demo ↗', href: 'https://mmac-hub.vercel.app/', variant: 'accent' },
@@ -32,7 +35,7 @@ export const mmac = {
       type: 'figures',
       figures: [
         {
-          src: screenshots.mmacHome,
+          ...screenshots.mmacHome,
           alt: 'MMAC Hub public homepage: Real Care for Real Life, with buttons to get help and learn how MMAC helps',
           caption:
             'The branded public site, live as a portfolio demo. A banner asks visitors not to submit real information.',
@@ -52,6 +55,7 @@ export const mmac = {
       type: 'cards',
       label: '02 · One system, four kinds of users',
       heading: 'I started with people and permissions, not screens.',
+      headingMaxWidth: '20ch',
       numbered: true,
       cards: [
         {
@@ -76,6 +80,8 @@ export const mmac = {
       type: 'rows',
       label: '03 · Product rules',
       heading: 'Turning what people know into rules the software can follow.',
+      headingMaxWidth: '20ch',
+      titleSize: 26,
       rows: [
         {
           title: 'Keep complexity with the system',
@@ -114,6 +120,10 @@ export const mmac = {
       // Shown below the table-name tags.
       figure: {
         src: assistanceIntakeSchema,
+        fullSize: {
+          href: '/diagrams/mmac-assistance-intake-schema.png',
+          name: 'intake schema diagram',
+        },
         width: 1536,
         height: 1024,
         alt: 'Implemented MMAC Hub Assistance Intake relational schema showing relationships between people, households, animals, assistance requests, requested services, and prescreening.',
@@ -125,6 +135,7 @@ export const mmac = {
       type: 'cards',
       label: '05 · What shipped · New',
       heading: 'From schema to a live site MMAC can review.',
+      headingMaxWidth: '20ch',
       numbered: false,
       cards: [
         {
@@ -150,6 +161,10 @@ export const mmac = {
       // workflows, so it lives here rather than under "What shipped".
       figure: {
         src: coreWorkflowsMvp,
+        fullSize: {
+          href: '/diagrams/mmac-core-workflows-mvp.png',
+          name: 'core workflows diagram',
+        },
         width: 1536,
         height: 1024,
         alt: 'Designed MMAC Hub product model showing the core user paths and shared operational data required underneath assistance intake, vaccine clinics, volunteer and donation workflows, and the administrator portal.',

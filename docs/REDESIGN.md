@@ -149,6 +149,7 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
   - TaskFlow board
 - Save them in `src/assets/media/` with these names: `mmac-home.png`, `vetboard-question.png`, `vetboard-answer.png`, `vetiq-overview.png`, `taskflow-board.png`.
 - If you can't capture screenshots yourself, ask Tracy to take them.
+- Point `src/content/screenshots.js` at the new files and update each width/height there, so the browser keeps reserving the right space.
 - Delete media that's no longer used: the Nocturne images, `hero.png`, `react.svg`, `vite.svg`, and the duplicate `winter-fog-poster-final.jpg`. Keep `mothman-logo-main.png` (the favicon) and `winter-fog.mp4`, `winter-fog-poster.jpg`, `about-western-nc-storm.mp4` and `about-western-nc-storm-poster.jpg` (the homepage background videos and their posters). **List the files and confirm with Tracy before deleting anything.**
 
 ### Phase 9: QA and handoff
@@ -180,3 +181,4 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
 - ~~Tag pills in `Main.html` use a `rgba(242,242,239,0.2)` border, which isn't a token. (Phase 3)~~ **Resolved:** added `--line-soft` for tag borders.
 - ~~The summary pages hid the site's pill nav and footer in favor of their own header and footer. OK? (Phase 4)~~ **Resolved:** show the pill nav and site footer on every page. Keep "← All work" as a small link below the nav, and the back/next footer above the site footer. Phase 5 follows the same pattern.
 - ~~The references differ on the facts strip (dividers or not) and lead width (60ch or 62ch). (Phase 4)~~ **Resolved:** the divided four-column strip and 62ch on both pages.
+- ~~The two MMAC diagrams are about 1.6 MB each as PNGs. Compress them or convert to WebP? (Phase 5)~~ **Resolved:** the page now shows WebP versions: 1536×1024 like the originals, quality 0.85, about 166 KB and 176 KB. At 1:1 they're indistinguishable from the PNGs. The original PNGs moved to `public/diagrams/`, and a "View full size" link under each figure opens them in a new tab.

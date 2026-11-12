@@ -27,7 +27,7 @@ export const vetiq = {
       type: 'figures',
       figures: [
         {
-          src: screenshots.vetiqOverview,
+          ...screenshots.vetiqOverview,
           alt: 'VetIQ Practice overview: a health score of 72 out of 100 marked Needs attention, above KPI cards for revenue, average client transaction, hourly labor, cost of goods, new clients and EBITDA margin',
           caption:
             'The Practice overview. Every metric sits next to its target, and the health score says at a glance whether the month needs attention.',

@@ -130,7 +130,9 @@ function ProjectCard({ project, index }) {
       </div>
       <img
         className="work-card-shot"
-        src={project.screenshot}
+        src={project.screenshot.src}
+        width={project.screenshot.width}
+        height={project.screenshot.height}
         alt={project.screenshotAlt}
         loading={index === 0 ? 'eager' : 'lazy'}
         decoding="async"

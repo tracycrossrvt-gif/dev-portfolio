@@ -64,13 +64,13 @@ export const vetboard = {
       heading: 'Answer, see why, see where it came from.',
       figures: [
         {
-          src: screenshots.vetboardQuestion,
+          ...screenshots.vetboardQuestion,
           alt: 'VetBoard practice session showing question 1 of 5 about postoperative anesthetic deaths',
           caption:
             'Pick a subject or run a mixed five-question session, with progress shown as you go.',
         },
         {
-          src: screenshots.vetboardAnswer,
+          ...screenshots.vetboardAnswer,
           alt: 'A correct answer with an explanation and a link to the AAHA 2020 Anesthesia and Monitoring Guidelines',
           caption:
             'Each answer explains the reasoning and links to its source, here the AAHA anesthesia guidelines.',
