@@ -11,6 +11,13 @@ export const site = {
     { label: 'Contact', href: '/#contact' },
   ],
   resumeUrl: 'https://claude.ai/artifact/RDJ4yzZvoZmGwj6vNn9XU8',
+  // Shared chrome on project detail pages, from VetBoard.html / VetIQ.html.
+  projectPage: {
+    backHref: '/#work',
+    backLabel: '← All work',
+    footerBackLabel: '← Back to all work',
+    nextLabel: (title) => `Next: ${title} →`,
+  },
   contact: {
     email: 'tracycrossrvt@gmail.com',
     github: 'https://github.com/tracycrossrvt-gif',

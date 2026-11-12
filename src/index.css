@@ -153,9 +153,10 @@ button {
 
 /* Shared building blocks */
 
+/* 1280px of content plus the gutters, as on the design canvas. */
 .container {
   width: 100%;
-  max-width: var(--container);
+  max-width: calc(var(--container) + 2 * var(--gutter));
   margin: 0 auto;
   padding-inline: var(--gutter);
 }

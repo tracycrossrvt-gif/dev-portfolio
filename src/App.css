@@ -167,7 +167,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 140px 0 96px;
+  /* Main.html's 140px, plus the 81px its in-flow nav takes up; ours floats over the video. */
+  padding: 221px 0 96px;
 }
 
 .home-hero-label {
@@ -610,6 +611,323 @@
 
   .contact-inner {
     padding-block: 72px;
+  }
+}
+
+/* ---------- Project summary pages (VetBoard, VetIQ) ---------- */
+
+.project-summary {
+  line-height: 1.65;
+}
+
+/* Clears the floating nav pill (its bottom edge sits at 99px, 130px on phones). */
+.ps-top {
+  padding-top: 116px;
+}
+
+.ps-back {
+  font-size: 15px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.ps-back:hover {
+  color: var(--accent);
+}
+
+/* With the back link above, the label lands where the canvas has it. */
+.ps-hero {
+  padding: 64px 0 64px;
+}
+
+.ps-hero .section-label {
+  margin-bottom: 24px;
+}
+
+.ps-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.98;
+}
+
+.ps-hero .lead {
+  max-width: 62ch;
+  margin-top: 32px;
+}
+
+.ps-hero .btn-row {
+  margin-top: 40px;
+}
+
+.ps-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.ps-fact {
+  padding: 28px 24px;
+  border-right: 1px solid var(--line);
+}
+
+.ps-fact:first-child {
+  padding-left: 0;
+}
+
+.ps-fact:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.ps-fact-label {
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ps-fact-value {
+  color: var(--text);
+}
+
+.ps-section h2 {
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.02;
+}
+
+.ps-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 64px;
+  padding: 128px 0 64px;
+}
+
+.ps-split-head {
+  flex: 1 1 340px;
+  min-width: 0;
+}
+
+.ps-split-body,
+.ps-list-items {
+  flex: 1.4 1 520px;
+  min-width: 0;
+}
+
+.ps-split-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ps-rows {
+  padding: 64px 0;
+}
+
+.ps-rows h2,
+.ps-figures h2 {
+  margin-bottom: 48px;
+}
+
+.ps-heading-narrow {
+  max-width: 18ch;
+}
+
+.ps-row-list {
+  border-top: 1px solid var(--line);
+}
+
+.ps-row {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.ps-row-num {
+  font-family: var(--font-mono);
+  color: var(--accent);
+}
+
+.ps-row h3 {
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: normal;
+}
+
+.ps-figures {
+  padding: 96px 0 64px;
+}
+
+.ps-figure-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.ps-figure-row .ps-figure {
+  flex: 1 1 480px;
+  min-width: 0;
+}
+
+.ps-figure img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-img);
+}
+
+.ps-figure figcaption {
+  margin-top: 16px;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.ps-lead-figure {
+  margin-top: 96px;
+}
+
+.ps-lead-figure .ps-figure img {
+  border-radius: var(--radius-card-sm);
+}
+
+.ps-list {
+  padding: 96px 0 144px;
+}
+
+.ps-list-items {
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.ps-list-items li {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+
+.ps-list-items strong {
+  font-weight: 600;
+}
+
+.ps-list-items span {
+  color: var(--muted);
+}
+
+.ps-footer {
+  border-top: 1px solid var(--line);
+}
+
+.ps-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-block: 48px;
+}
+
+.ps-footer-inner a {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  text-decoration: none;
+}
+
+@media (max-width: 720px) {
+  .ps-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ps-row h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* The nav pill wraps to two rows on phones. */
+  .ps-top {
+    padding-top: 156px;
+  }
+
+  .ps-hero {
+    padding: 32px 0 40px;
+  }
+
+  .ps-hero .lead {
+    margin-top: 24px;
+    font-size: 18px;
+  }
+
+  .ps-hero .btn-row {
+    margin-top: 28px;
+  }
+
+  .ps-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ps-fact {
+    padding: 20px 16px;
+  }
+
+  .ps-fact:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .ps-fact:nth-child(even) {
+    padding-right: 0;
+    border-right: 0;
+  }
+
+  .ps-fact:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .ps-split {
+    gap: 28px;
+    padding: 64px 0 32px;
+  }
+
+  .ps-rows {
+    padding: 32px 0;
+  }
+
+  .ps-rows h2,
+  .ps-figures h2 {
+    margin-bottom: 28px;
+  }
+
+  .ps-figures {
+    padding: 48px 0 32px;
+  }
+
+  .ps-figure-row {
+    gap: 24px;
+  }
+
+  .ps-lead-figure {
+    margin-top: 48px;
+  }
+
+  .ps-list {
+    padding: 48px 0 72px;
+  }
+
+  .ps-footer-inner {
+    padding-block: 32px;
+  }
+
+  .ps-footer-inner a {
+    font-size: 22px;
   }
 }
 

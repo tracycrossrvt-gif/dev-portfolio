@@ -45,7 +45,7 @@ Put these in `src/index.css` as CSS custom properties, and use only these values
 - Section label: mono 13px, uppercase, letter-spacing 0.12em, gold. Format: `02 · Selected work`
 
 **Shape and layout**
-- Container: max-width 1280px, horizontal padding 40px (20px under 640px)
+- Container: 1280px of content plus 40px padding on each side (20px under 640px). The canvas files use content-box sizing, so their `max-width: 1280px` excludes the padding; `.container` reproduces that.
 - Radii: project cards 28px, small cards 20px, images 16px, buttons and tags 999px (pills)
 - Section vertical padding: about 128–144px on desktop, roughly half on phones
 
@@ -103,20 +103,22 @@ Build `HomePage.jsx` from `Main.html`, section by section:
   - `/work/vetboard` from `VetBoard.html`
   - `/work/vetiq-analytics` from `VetIQ.html`
 - Sections, in order:
-  - Back link header
+  - The site's pill nav, as on every page, with a small "← All work" text link just below it. The page's top padding clears the floating nav.
   - Hero: label, H1, lead, buttons
   - 4-column facts strip (Role, Users, Adoption, Stack), which wraps on phones
   - Problem: a two-column heading and body
   - Numbered decisions rows
   - A closing list section
 - Screenshot(s) with captions follow each reference page's own order, which the content file's ordered `sections` array already records: `VetIQ.html` shows its screenshot right after the facts strip, and `VetBoard.html` shows its screenshots after the decisions rows.
-  - Footer with "Back to all work" and "Next: …" links
+  - A "← Back to all work" / "Next: …" footer, above the site footer
+- The facts strip is the divided four-column version (2×2 on phones), and the lead is 62ch wide, on both pages.
 - Next-link order: VetBoard → VetIQ → MMAC → VetBoard.
 
 **Done when:** both pages match their references and use the same component.
 
 ### Phase 5: MMAC case study
 - Rebuild `MmacCaseStudyPage.jsx` at the **same URL** (`/case-studies/mmac-hub`) from `MMAC.html`.
+- Follow the Phase 4 page pattern: the site's pill nav and footer stay, a small "← All work" link sits just below the nav, the divided four-column facts strip, and the "← Back to all work" / "Next: VetBoard →" footer above the site footer. Ignore the canvas's own "TC. / ← All work" header.
 - **Keep the two existing diagrams.** Show `mmac-assistance-intake-schema.png` in section 04 (The foundation), below the table-name tags, and `mmac-core-workflows-mvp.png` in section 06 (What's next), above the Now / Next / Then timeline. Keep its "Planned workflows, not shipped interfaces." caption. Each gets a `<figure>` with a short caption saying what the diagram shows. Keep their existing alt text.
 - The four user cards use `repeat(auto-fit, minmax(240px, 1fr))` so long titles never overflow. This was a bug on the canvas; don't bring it back.
 - The "What's next" timeline (Now / Next / Then) stacks on phones.
@@ -176,3 +178,5 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
 - ~~Project cards only stack (sticky) at 1120×760 and up, since a taller stacked card would be half covered on phones. OK? (Phase 3)~~ **Resolved:** agreed.
 - ~~`about-western-nc-storm.mp4` has no poster image. Export one? (Phase 3)~~ **Resolved:** exported the first frame as `about-western-nc-storm-poster.jpg` (37 KB) and used it as the contact poster. Under reduced motion the video never loads.
 - ~~Tag pills in `Main.html` use a `rgba(242,242,239,0.2)` border, which isn't a token. (Phase 3)~~ **Resolved:** added `--line-soft` for tag borders.
+- ~~The summary pages hid the site's pill nav and footer in favor of their own header and footer. OK? (Phase 4)~~ **Resolved:** show the pill nav and site footer on every page. Keep "← All work" as a small link below the nav, and the back/next footer above the site footer. Phase 5 follows the same pattern.
+- ~~The references differ on the facts strip (dividers or not) and lead width (60ch or 62ch). (Phase 4)~~ **Resolved:** the divided four-column strip and 62ch on both pages.

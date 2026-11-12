@@ -1,7 +1,15 @@
-import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { site } from '../../content/site'
 
 function SiteShell({ children }) {
+  const { pathname, hash } = useLocation()
+
+  // A new page starts at the top, unless the link points at a section.
+  useEffect(() => {
+    if (!hash) window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname, hash])
+
   return (
     <div className="site-shell">
       <a className="skip-link" href="#main-content">
