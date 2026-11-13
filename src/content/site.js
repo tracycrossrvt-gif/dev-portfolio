@@ -22,6 +22,6 @@ export const site = {
   contact: {
     email: 'tracycrossrvt@gmail.com',
     github: 'https://github.com/tracycrossrvt-gif',
-    linkedin: 'https://www.linkedin.com/in/tracy-cross-02b827370',
+    linkedin: 'https://www.linkedin.com/in/tracy-cross-dev',
   },
 }

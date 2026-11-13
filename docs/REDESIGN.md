@@ -169,7 +169,7 @@ Use one easing everywhere, `cubic-bezier(0.2, 0.8, 0.2, 1)`.
 
 - ~~Should `AboutPage.jsx` and `about.js` be deleted, or rewritten to fit the new positioning? (Phase 6)~~ **Resolved:** deleted (git history keeps them). `/about` redirects to `/#background`, and the About-only CSS is gone too.
 - ~~`public/Tracy_Cross_Resume.pdf` is no longer linked anywhere. Delete the file, or keep it? (Phase 1)~~ **Resolved:** deleted.
-- ~~`Main.html` links LinkedIn as `https://www.linkedin.com/in/tracy-cross-02b827370`, but `site.js` still has the URL with `utm_*` tracking parameters. Switch to the clean URL? (Phase 1)~~ **Resolved:** `site.js` now uses the clean URL.
+- ~~`site.js` had a LinkedIn URL with `utm_*` tracking parameters. Switch to the clean URL? (Phase 1)~~ **Resolved:** later corrected to Tracy's current profile, `https://www.linkedin.com/in/tracy-cross-dev`, in `site.js` and `Main.html`.
 - ~~The favicon in `index.html` is still `mothman-logo-main.png`, which Phase 8 deletes. What should replace it? (Phase 1)~~ **Resolved:** keep the mothman image as the favicon; it's removed from the Phase 8 deletion list.
 - ~~Phase 5 puts `mmac-core-workflows-mvp.png` in section 05 "What shipped", but the current page says that diagram shows planned workflows. Should the diagram move? (Phase 2)~~ **Resolved:** moved to section 06 "What's next", above the timeline, keeping the "Planned workflows, not shipped interfaces." caption.
 - ~~The two diagram captions in `mmac.js` reuse sentences from the current MMAC page's captions. OK as is? (Phase 2)~~ **Resolved:** reused captions are fine.
