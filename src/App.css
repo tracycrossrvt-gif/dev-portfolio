@@ -67,10 +67,19 @@
 }
 
 .site-nav .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-display);
   font-weight: 800;
   font-size: 20px;
   color: var(--text);
+}
+
+.brand-mark {
+  width: 28px;
+  height: 28px;
+  flex: none;
 }
 
 .site-nav .btn-light {

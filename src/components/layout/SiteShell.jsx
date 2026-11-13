@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import mothmanMark from '../../assets/media/mothman-mark.webp'
 import { site } from '../../content/site'
 
 function SiteShell({ children }) {
@@ -19,7 +20,12 @@ function SiteShell({ children }) {
       <header className="site-header">
         <nav className="site-nav" aria-label="Main">
           <Link className="brand" to="/" aria-label={`${site.name}, home`}>
-            TC<span className="accent">.</span>
+            {/* Decorative: the link is already named. A 2.8 KB copy of the
+                favicon logo, sized for 28px at up to 3x density. */}
+            <img className="brand-mark" src={mothmanMark} alt="" width="28" height="28" />
+            <span>
+              TC<span className="accent">.</span>
+            </span>
           </Link>
           {site.nav.map((item) => (
             <a key={item.href} className="nav-link" href={item.href}>
