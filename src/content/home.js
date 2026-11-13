@@ -32,6 +32,11 @@ export const home = {
     'Supabase',
     'Stakeholder alignment',
   ],
+  // Accessible names for the ticker's pause/play button.
+  tickerControls: {
+    pause: 'Pause scrolling skills',
+    play: 'Play scrolling skills',
+  },
   work: {
     label: '02 · Selected work',
     heading: "Products I've defined, designed and shipped.",

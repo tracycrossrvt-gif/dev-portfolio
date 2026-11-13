@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useReveal } from '../../hooks/useReveal'
 import { site } from '../../content/site'
 
 const pad = (n) => String(n).padStart(2, '0')
@@ -197,9 +199,12 @@ function spacingClass(position, count) {
 // content file such as content/vetboard.js; sections render in its order.
 function ProjectSummaryPage({ page }) {
   const spaced = page.sections.filter((section) => section.label)
+  const pageRef = useRef(null)
+  // The hero has its own load animation, so its label is left out of reveals.
+  useReveal(pageRef, '.ps-hero')
 
   return (
-    <div className="project-summary">
+    <div className="project-summary" ref={pageRef}>
       <div className="container ps-top">
         <Link className="ps-back" to={projectPage.backHref}>
           {projectPage.backLabel}
@@ -208,10 +213,12 @@ function ProjectSummaryPage({ page }) {
 
       <div className="container">
         <section className="ps-hero">
-          <p className="section-label">{page.label}</p>
-          <h1 style={widthStyle(page.titleMaxWidth)}>{page.title}</h1>
-          <p className="lead">{page.lead}</p>
-          <div className="btn-row">
+          <p className="section-label rise">{page.label}</p>
+          <h1 className="rise-2" style={widthStyle(page.titleMaxWidth)}>
+            {page.title}
+          </h1>
+          <p className="lead rise-3">{page.lead}</p>
+          <div className="btn-row rise-3">
             {page.actions.map((action) => (
               <a
                 key={action.href}

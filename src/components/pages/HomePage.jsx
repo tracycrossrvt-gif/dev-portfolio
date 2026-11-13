@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import winterFogVideo from '../../assets/media/winter-fog.mp4'
 import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
@@ -8,6 +8,7 @@ import { home } from '../../content/home'
 import { projects } from '../../content/projects'
 import { site } from '../../content/site'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
+import { useReveal } from '../../hooks/useReveal'
 
 const pad = (n) => String(n).padStart(2, '0')
 
@@ -89,6 +90,49 @@ function ContactVideo({ sectionRef }) {
   )
 }
 
+// Skills ticker. The band itself is decorative (aria-hidden); the pause/play
+// button sits outside it so keyboard and screen-reader users can stop the
+// motion. Hovering also pauses it. Under reduced motion it never moves, so
+// the button isn't shown.
+function Ticker({ items, labels }) {
+  const [paused, setPaused] = useState(false)
+  const reduced = usePrefersReducedMotion()
+
+  return (
+    <div className={paused ? 'ticker-band is-paused' : 'ticker-band'}>
+      {/* The list is rendered twice so the -50% loop joins seamlessly. */}
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker-track">
+          {[...items, ...items].map((item, index) => (
+            <span key={index} className="ticker-item">
+              <span>{item}</span>
+              <span className="accent">✦</span>
+            </span>
+          ))}
+        </div>
+      </div>
+      {reduced ? null : (
+        <button
+          type="button"
+          className="ticker-toggle"
+          aria-label={paused ? labels.play : labels.pause}
+          onClick={() => setPaused((value) => !value)}
+        >
+          {paused ? (
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path d="M4 2.5v11l9-5.5z" fill="currentColor" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+              <path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor" />
+            </svg>
+          )}
+        </button>
+      )}
+    </div>
+  )
+}
+
 function ProjectCard({ project, index }) {
   return (
     <article className="work-card">
@@ -144,7 +188,9 @@ function ProjectCard({ project, index }) {
 function HomePage() {
   const { hash } = useLocation()
   const contactRef = useRef(null)
+  const pageRef = useRef(null)
   const { hero, trackRecord, ticker, work, approach, background, contact } = home
+  useReveal(pageRef)
 
   // Arriving from another page via /#section: scroll once the section exists.
   useEffect(() => {
@@ -153,17 +199,17 @@ function HomePage() {
   }, [hash])
 
   return (
-    <div className="home">
+    <div className="home" ref={pageRef}>
       <section className="home-hero">
         <HeroVideo />
         <div className="bg-overlay" aria-hidden="true" />
         <div className="container home-hero-inner">
-          <p className="home-hero-label">{hero.label}</p>
-          <h1>
+          <p className="home-hero-label rise">{hero.label}</p>
+          <h1 className="rise-2">
             {hero.title}
             <span className="accent">.</span>
           </h1>
-          <div className="home-hero-bottom">
+          <div className="home-hero-bottom rise-3">
             <p className="lead">{hero.lead}</p>
             <div className="btn-row">
               <a className="btn btn-accent" href={hero.primary.href}>
@@ -188,16 +234,7 @@ function HomePage() {
         </section>
       </div>
 
-      <div className="ticker" aria-hidden="true">
-        <div className="ticker-track">
-          {ticker.map((item) => (
-            <span key={item} className="ticker-item">
-              <span>{item}</span>
-              <span className="accent">✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
+      <Ticker items={ticker} labels={home.tickerControls} />
 
       <section id="work" className="container home-section work-section">
         <p className="section-label">{work.label}</p>

@@ -151,6 +151,62 @@ button {
   outline-offset: 3px;
 }
 
+/* Motion. Everything lives inside this media query, so visitors who ask their
+   OS to reduce motion get no animation and no hidden starting states. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: rises in on load, staggered 0 / 120 / 240ms. */
+  .rise,
+  .rise-2,
+  .rise-3 {
+    animation: rise 900ms var(--ease) both;
+  }
+
+  .rise-2 {
+    animation-delay: 120ms;
+  }
+
+  .rise-3 {
+    animation-delay: 240ms;
+  }
+
+  /* Section reveals (see hooks/useReveal.js). Until its label scrolls into
+     view, a section's label and heading wait just below their place. */
+  .reveal-ready .section-label[data-reveal],
+  .reveal-ready .section-label[data-reveal] + :is(h1, h2) {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .reveal-ready .section-label[data-reveal].is-revealed,
+  .reveal-ready .section-label[data-reveal].is-revealed + :is(h1, h2) {
+    animation: rise 900ms var(--ease) both;
+  }
+
+  .reveal-ready .section-label[data-reveal].is-revealed + :is(h1, h2) {
+    animation-delay: 120ms;
+  }
+}
+
 /* Shared building blocks */
 
 /* 1280px of content plus the gutters, as on the design canvas. */

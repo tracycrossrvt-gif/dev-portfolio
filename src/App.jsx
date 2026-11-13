@@ -17,7 +17,12 @@ function App() {
           <Route path="/about" element={<Navigate to="/#background" replace />} />
           <Route path="/case-studies/mmac-hub" element={<MmacCaseStudyPage />} />
           {summaryPages.map((page) => (
-            <Route key={page.slug} path={page.path} element={<ProjectSummaryPage page={page} />} />
+            // Keyed so moving between summaries mounts a fresh page (and replays its motion).
+            <Route
+              key={page.slug}
+              path={page.path}
+              element={<ProjectSummaryPage key={page.slug} page={page} />}
+            />
           ))}
         </Routes>
       </SiteShell>

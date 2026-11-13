@@ -234,18 +234,65 @@
   color: var(--muted);
 }
 
+.ticker-band {
+  position: relative;
+  margin-top: 56px;
+}
+
 .ticker {
   overflow: hidden;
-  margin-top: 56px;
   padding: 28px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
+/* Pause on hover, or when the visitor presses the pause button. */
+.ticker-band:hover .ticker-track,
+.ticker-band.is-paused .ticker-track {
+  animation-play-state: paused;
+}
+
+/* 44px pause/play button at the band's right edge. Focus uses the global
+   gold ring (2px, 3px offset). */
+.ticker-toggle {
+  position: absolute;
+  top: 50%;
+  right: var(--gutter);
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.ticker-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Spacing sits after each item rather than between them, so the track is
+   exactly two equal copies and the -50% loop has no seam. */
 .ticker-track,
 .ticker-item {
   display: flex;
+}
+
+.ticker-item {
   gap: 48px;
+  padding-right: 48px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ticker-track {
+    animation: ticker 40s linear infinite;
+  }
 }
 
 .ticker-track {
@@ -555,14 +602,17 @@
     font-size: 44px;
   }
 
-  .ticker {
+  .ticker-band {
     margin-top: 40px;
+  }
+
+  .ticker {
     padding: 20px 0;
   }
 
-  .ticker-track,
   .ticker-item {
     gap: 28px;
+    padding-right: 28px;
   }
 
   .ticker-track {
