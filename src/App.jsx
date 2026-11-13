@@ -1,8 +1,9 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import SiteShell from './components/layout/SiteShell'
 import HomePage from './components/pages/HomePage'
-import AboutPage from './components/pages/AboutPage'
 import MmacCaseStudyPage from './components/pages/MmacCaseStudyPage'
+import ProjectSummaryPage from './components/pages/ProjectSummaryPage'
+import { summaryPages } from './content/summaryPages'
 import './App.css'
 
 function App() {
@@ -11,8 +12,18 @@ function App() {
       <SiteShell>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
+          {/* The old About page was retired (it conflicted with the current
+              positioning), so old links land on the homepage's Background section. */}
+          <Route path="/about" element={<Navigate to="/#background" replace />} />
           <Route path="/case-studies/mmac-hub" element={<MmacCaseStudyPage />} />
+          {summaryPages.map((page) => (
+            // Keyed so moving between summaries mounts a fresh page (and replays its motion).
+            <Route
+              key={page.slug}
+              path={page.path}
+              element={<ProjectSummaryPage key={page.slug} page={page} />}
+            />
+          ))}
         </Routes>
       </SiteShell>
     </BrowserRouter>

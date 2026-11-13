@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MMAC Hub case study</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0B0C0F}
+a{color:#F2F2EF}a:hover{color:#E8B949}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+@media (prefers-reduced-motion:reduce){.rise{animation:none}}
+</style>
+</helmet>
+<div style="background: #0B0C0F; color: #F2F2EF; font-family: Inter, system-ui, sans-serif; font-size: 17px; line-height: 1.65; min-height: 100vh">
+
+<header style="max-width: 1280px; margin: 0 auto; padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap">
+<a href="Main.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 20px; text-decoration: none">TC<span style="color: {{accent}}">.</span></a>
+<a href="Main.dc.html" style="font-size: 15px; text-decoration: none; border: 1px solid rgba(242,242,239,0.3); padding: 10px 20px; border-radius: 999px">← All work</a>
+</header>
+
+<main style="max-width: 1280px; margin: 0 auto; padding: 0 40px">
+
+<section class="rise" style="padding: 96px 0 64px">
+<p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">MMAC Hub · Case study</p>
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(3rem, 7vw, 6rem); line-height: 0.98; letter-spacing: -0.035em; max-width: 16ch">They asked for a website. They needed a system.</h1>
+<p style="margin: 32px 0 0; max-width: 62ch; font-size: 20px; color: #C9CCD2">Macon Moves Animal Care helps families get affordable veterinary care in Macon, Jackson and Rabun Counties. As it grew across partner hospitals, volunteers, clinics and assistance programs, it needed a way to coordinate the work behind the website.</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 40px; font-weight: 600">
+<a href="https://mmac-hub.vercel.app/" style="text-decoration: none; background: {{accent}}; color: #0B0C0F; padding: 16px 28px; border-radius: 999px">Visit live demo ↗</a>
+<a href="https://github.com/tracycrossrvt-gif/mmac-hub" style="text-decoration: none; border: 1px solid rgba(242,242,239,0.3); padding: 15px 27px; border-radius: 999px">Repository ↗</a>
+</div>
+</section>
+
+<section aria-label="Project facts" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid rgba(242,242,239,0.12); border-bottom: 1px solid rgba(242,242,239,0.12)">
+<div style="padding: 28px 24px 28px 0; border-right: 1px solid rgba(242,242,239,0.12)"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Role</p><p style="margin: 0">Product discovery, data model, frontend</p></div>
+<div style="padding: 28px 24px; border-right: 1px solid rgba(242,242,239,0.12)"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Users</p><p style="margin: 0">Public, MMAC admin, hospital staff, volunteers</p></div>
+<div style="padding: 28px 24px; border-right: 1px solid rgba(242,242,239,0.12)"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Status</p><p style="margin: 0"><span style="color: {{accent}}">Live demo</span>, awaiting MMAC sign-off</p></div>
+<div style="padding: 28px 0 28px 24px"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: #9DA1A9">Stack</p><p style="margin: 0">Next.js · Supabase (PostgreSQL) · Zod · Vercel</p></div>
+</section>
+
+<figure style="margin: 96px 0 0">
+<img src="../screenshots/mmac-home.png" alt="MMAC Hub public homepage: Real Care for Real Life, with buttons to get help and learn how MMAC helps" style="width: 100%; display: block; border-radius: 20px; border: 1px solid rgba(242,242,239,0.12)">
+<figcaption style="margin-top: 16px; font-size: 15px; color: #9DA1A9">The branded public site, live as a portfolio demo. A banner asks visitors not to submit real information.</figcaption>
+</figure>
+
+<section style="padding: 128px 0 64px; display: flex; flex-wrap: wrap; gap: 64px">
+<div style="flex: 1 1 340px; min-width: 0">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">01 · The problem</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em">The website was the easy part.</h2>
+</div>
+<div style="flex: 1.4 1 520px; min-width: 0; color: #C9CCD2; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0">Delivering care meant coordinating requests, animals, counties, partner hospitals, schedules, services, volunteers, clinics and financial programs. Putting forms online wouldn't fix that. I needed to understand who needs what information, who makes which decisions, and where things got stuck.</p>
+<p style="margin: 0">Years of running corporate veterinary hospitals meant I knew many of these workflows from the inside. That made it more important not to design around my own assumptions. MMAC's real processes and people were the source of truth.</p>
+</div>
+</section>
+
+<section style="padding: 64px 0">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">02 · One system, four kinds of users</p>
+<h2 style="margin: 0 0 48px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em; max-width: 20ch">I started with people and permissions, not screens.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<div style="padding: 28px; border-radius: 20px; background: #15171C; border: 1px solid rgba(242,242,239,0.12)"><p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">01</p><h3 style="margin: 0 0 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; line-height: 1.15">The public</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Ask for help without knowing veterinary terms or how MMAC works inside.</p></div>
+<div style="padding: 28px; border-radius: 20px; background: #15171C; border: 1px solid rgba(242,242,239,0.12)"><p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">02</p><h3 style="margin: 0 0 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; line-height: 1.15; overflow-wrap: break-word">MMAC admin</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Controls availability, reviews requests and handles exceptions.</p></div>
+<div style="padding: 28px; border-radius: 20px; background: #15171C; border: 1px solid rgba(242,242,239,0.12)"><p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">03</p><h3 style="margin: 0 0 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; line-height: 1.15">Hospital staff</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Schedule approved cases without seeing more than they need.</p></div>
+<div style="padding: 28px; border-radius: 20px; background: #15171C; border: 1px solid rgba(242,242,239,0.12)"><p style="margin: 0 0 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">04</p><h3 style="margin: 0 0 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; line-height: 1.15">Volunteers</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Get resources and expectations, with no admin access.</p></div>
+</div>
+</section>
+
+<section style="padding: 96px 0 64px">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">03 · Product rules</p>
+<h2 style="margin: 0 0 48px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em; max-width: 20ch">Turning what people know into rules the software can follow.</h2>
+<div style="border-top: 1px solid rgba(242,242,239,0.12)">
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">01</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.15">Keep complexity with the system</h3>
+<p style="margin: 0; color: #C9CCD2">People choose the help they need, not a clinical category. Prescreening adapts by species, like heartworm testing for dogs and FeLV/FIV for cats, without asking the requester to know that.</p>
+</div>
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">02</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.15">Model capacity the way MMAC controls it</h3>
+<p style="margin: 0; color: #C9CCD2">The administrator decides what's offered. Weekdays are the default and weekends can be turned on. The public sees what's available, not the partner details behind it.</p>
+</div>
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">03</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.15">Permissions are workflow design</h3>
+<p style="margin: 0; color: #C9CCD2">Each role gets enough access to do its job and no more. That was decided in the model before it became an interface.</p>
+</div>
+<div style="display: grid; grid-template-columns: 80px minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; padding: 32px 0; border-bottom: 1px solid rgba(242,242,239,0.12)">
+<p style="margin: 0; font-family: 'JetBrains Mono', monospace; color: {{accent}}">04</p>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.15">Capture now what you'll need to prove later</h3>
+<p style="margin: 0; color: #C9CCD2">As a nonprofit, MMAC will need to connect spending to programs, funding and geography. The data is captured as the work happens so reports don't mean rebuilding history.</p>
+</div>
+</div>
+</section>
+
+<section style="padding: 96px 0 64px; display: flex; flex-wrap: wrap; gap: 64px">
+<div style="flex: 1 1 340px; min-width: 0">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">04 · The foundation</p>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em">Intake is the gate to everything.</h2>
+</div>
+<div style="flex: 1.4 1 520px; min-width: 0; color: #C9CCD2; display: flex; flex-direction: column; gap: 20px">
+<p style="margin: 0">Before MMAC can coordinate care, it needs a reliable picture of who's asking, which animals are involved and what they need. So the Assistance Intake data model came first.</p>
+<p style="margin: 0">It keeps people, households, animals, requests, requested services and prescreening as separate records instead of one big form. Later workflows like scheduling, providers and reporting build on that same foundation.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px">
+<span style="border: 1px solid rgba(242,242,239,0.2); border-radius: 999px; padding: 6px 14px">people</span><span style="border: 1px solid rgba(242,242,239,0.2); border-radius: 999px; padding: 6px 14px">households</span><span style="border: 1px solid rgba(242,242,239,0.2); border-radius: 999px; padding: 6px 14px">animals</span><span style="border: 1px solid rgba(242,242,239,0.2); border-radius: 999px; padding: 6px 14px">assistance_requests</span><span style="border: 1px solid rgba(242,242,239,0.2); border-radius: 999px; padding: 6px 14px">requested_services</span><span style="border: 1px solid rgba(242,242,239,0.2); border-radius: 999px; padding: 6px 14px">prescreening</span>
+</div>
+</div>
+</section>
+
+<section style="padding: 96px 0 64px">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">05 · What shipped · New</p>
+<h2 style="margin: 0 0 48px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em; max-width: 20ch">From schema to a live site MMAC can review.</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px">
+<div style="padding: 32px; border-radius: 20px; background: #15171C; border: 1px solid rgba(242,242,239,0.12)"><h3 style="margin: 0 0 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; line-height: 1.15">A working intake form</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Fixed the submission blocker caused by hidden field errors and late validation, and made error messages clear and accessible.</p></div>
+<div style="padding: 32px; border-radius: 20px; background: #15171C; border: 1px solid rgba(242,242,239,0.12)"><h3 style="margin: 0 0 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; line-height: 1.15">A database I can trust</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Backed up, rehearsed and rebuilt the database so every migration is recorded, then verified permissions and admin access.</p></div>
+<div style="padding: 32px; border-radius: 20px; background: #15171C; border: 1px solid rgba(242,242,239,0.12)"><h3 style="margin: 0 0 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; line-height: 1.15">A branded public site</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Home, Our Programs, Get Involved and Get Help, checked against MMAC's real counties, services, contacts and donation link.</p></div>
+</div>
+<p style="margin: 32px 0 0; max-width: 70ch; color: #C9CCD2">Deployed to Vercel and tested end to end on a phone: browsing, donating, submitting a request, signing in as admin and updating its status.</p>
+</section>
+
+<section style="padding: 96px 0 144px">
+<p style="margin: 0 0 20px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: {{accent}}">06 · What's next</p>
+<h2 style="margin: 0 0 48px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(2.25rem, 4vw, 3.5rem); line-height: 1.02; letter-spacing: -0.03em">Rolled out in phases, at MMAC's pace.</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 2px solid {{accent}}">
+<li style="padding: 28px 24px 0 0"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{accent}}">Now</p><h3 style="margin: 0 0 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px">Review and sign-off</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">MMAC reviews the live demo and approves it.</p></li>
+<li style="padding: 28px 24px 0"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #9DA1A9">Next</p><h3 style="margin: 0 0 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px">MMAC's own production site</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">A separate database, email notifications, a privacy notice and admin access for MMAC's team.</p></li>
+<li style="padding: 28px 0 0 24px"><p style="margin: 0 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #9DA1A9">Then</p><h3 style="margin: 0 0 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px">The full data model, phase by phase</h3><p style="margin: 0; font-size: 15px; color: #C9CCD2">Scheduling, providers and reporting added one at a time on the intake foundation.</p></li>
+</ol>
+</section>
+
+</main>
+
+<footer style="border-top: 1px solid rgba(242,242,239,0.12)">
+<div style="max-width: 1280px; margin: 0 auto; padding: 48px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px">
+<a href="Main.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; text-decoration: none">← Back to all work</a>
+<a href="VetBoard.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 28px; text-decoration: none">Next: VetBoard →</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#E8B949","options":["#E8B949","#B6F36A","#6EA8FF","#E8E6E1"]},"$preview":{"width":1440,"height":4000}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#E8B949' };
+}
+}
+</script>
+</body>
+</html>

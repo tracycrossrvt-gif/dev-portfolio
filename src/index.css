@@ -1,25 +1,42 @@
 :root {
-  --bg: #1c1a1a;
-  --bg-strong: #141212;
-  --surface: #221f1e;
-  --bone: #f2e7dc;
-  --bone-soft: #d8cab6;
-  --muted: #b5a295;
-  --violet: #7d6d8f;
-  --violet-soft: rgba(125, 109, 143, 0.18);
-  --oxblood: #4f2d31;
-  --border: rgba(242, 231, 220, 0.14);
-  --focus: #f3d7b5;
+  /* Color */
+  --bg: #0b0c0f;
+  --surface-1: #15171c;
+  --surface-2: #17191f;
+  --surface-3: #191b22;
+  --surface-4: #1b1d24;
+  --line: rgba(242, 242, 239, 0.12);
+  --line-soft: rgba(242, 242, 239, 0.2);
+  --line-strong: rgba(242, 242, 239, 0.3);
+  --text: #f2f2ef;
+  --text-2: #c9ccd2;
+  --muted: #9da1a9;
+  --ticker: #6e737c;
+  --accent: #e8b949;
+  --on-accent: #0b0c0f;
 
-  --container-width: 1180px;
-  --font-sans: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: Georgia, 'Times New Roman', serif;
+  /* Type */
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  font-weight: 400;
-  color: var(--bone);
-  background: var(--bg);
+  --fs-h1: clamp(3rem, 8vw, 7.25rem);
+  --fs-h2: clamp(2.5rem, 5.5vw, 5rem);
+  --fs-lead: 20px;
+  --fs-body: 17px;
+  --fs-label: 13px;
+
+  /* Shape and layout */
+  --container: 1280px;
+  --gutter: 40px;
+  --section-y: 136px;
+  --radius-card: 28px;
+  --radius-card-sm: 20px;
+  --radius-img: 16px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
   color-scheme: dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -27,7 +44,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
+@media (max-width: 640px) {
+  :root {
+    --gutter: 20px;
+    --section-y: 68px;
+  }
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -35,75 +61,216 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(125, 109, 143, 0.15), transparent 32%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg-strong) 100%);
-  color: var(--bone);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
 }
 
 #root {
   min-height: 100vh;
 }
 
-img {
+img,
+video {
   max-width: 100%;
   display: block;
 }
 
-p,
-ul,
-ol,
-li,
 h1,
 h2,
-h3 {
-  margin-top: 0;
-}
-
+h3,
+h4,
 p,
 ul,
 ol,
-li {
-  color: var(--bone-soft);
+figure {
+  margin: 0;
 }
 
 h1,
 h2,
-h3 {
-  color: var(--bone);
+h3,
+h4 {
+  color: var(--text);
   font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.04;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1;
   letter-spacing: -0.03em;
 }
 
-.container {
-  width: min(var(--container-width), calc(100% - 2rem));
-  margin: 0 auto;
+h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-button,
+p,
+li {
+  color: var(--text-2);
+}
+
 a {
+  color: var(--text);
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+button {
   font: inherit;
 }
 
-button,
-a,
-input,
-textarea,
-select {
-  outline-offset: 2px;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 2px solid var(--focus);
-  outline-offset: 3px;
+/* Motion. Everything lives inside this media query, so visitors who ask their
+   OS to reduce motion get no animation and no hidden starting states. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: rises in on load, staggered 0 / 120 / 240ms. */
+  .rise,
+  .rise-2,
+  .rise-3 {
+    animation: rise 900ms var(--ease) both;
+  }
+
+  .rise-2 {
+    animation-delay: 120ms;
+  }
+
+  .rise-3 {
+    animation-delay: 240ms;
+  }
+
+  /* Section reveals (see hooks/useReveal.js). Until its label scrolls into
+     view, a section's label and heading wait just below their place. */
+  .reveal-ready .section-label[data-reveal],
+  .reveal-ready .section-label[data-reveal] + :is(h1, h2) {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .reveal-ready .section-label[data-reveal].is-revealed,
+  .reveal-ready .section-label[data-reveal].is-revealed + :is(h1, h2) {
+    animation: rise 900ms var(--ease) both;
+  }
+
+  .reveal-ready .section-label[data-reveal].is-revealed + :is(h1, h2) {
+    animation-delay: 120ms;
+  }
+}
+
+/* Shared building blocks */
+
+/* 1280px of content plus the gutters, as on the design canvas. */
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.section-label {
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  color: var(--text-2);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 27px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn-accent:hover {
+  color: var(--on-accent);
+}
+
+.btn-outline {
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+}
+
+.btn-light {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.btn-light:hover {
+  color: var(--bg);
+  background: var(--accent);
 }
