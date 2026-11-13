@@ -10,7 +10,7 @@ export const site = {
     { label: 'Background', href: '/#background' },
     { label: 'Contact', href: '/#contact' },
   ],
-  resumeUrl: 'https://claude.ai/artifact/RDJ4yzZvoZmGwj6vNn9XU8',
+  resumeUrl: '/Tracy_Cross_Resume.pdf',
   // Shared chrome on project detail pages, from VetBoard.html / VetIQ.html.
   projectPage: {
     backHref: '/#work',
