@@ -8,8 +8,9 @@ export const home = {
     label: '01 · Tracy Cross · Product Manager · Atlanta, GA',
     title: 'I find where the work breaks, then ship the fix',
     lead: "Product manager with 15+ years in veterinary hospital leadership, most recently in corporate hospital operations. I map how work really moves, define what to build, and build it myself in React and Next.js. MBA. MS in AI Engineering starting January 2027.",
-    primary: { label: 'See the work', href: '#work' },
-    secondary: { label: 'Get in touch', href: '#contact' },
+    // Get in touch is the gold button and opens the contact modal; See the work is outlined.
+    primary: { label: 'Get in touch' },
+    secondary: { label: 'See the work', href: '#work' },
   },
   trackRecord: [
     {
@@ -123,7 +124,8 @@ export const home = {
   contact: {
     label: '05 · Contact',
     heading: "Let's fix what your team keeps working around",
-    // The gold email button comes first and shows site.contact.email.
+    // The gold Email button (a mailto: link to site.contact.email) comes first.
+    emailLabel: 'Email',
     links: [
       { label: 'LinkedIn', href: site.contact.linkedin },
       { label: 'GitHub', href: site.contact.github },

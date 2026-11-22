@@ -8,7 +8,8 @@ export const site = {
     { label: 'Work', href: '/#work' },
     { label: 'Approach', href: '/#approach' },
     { label: 'Background', href: '/#background' },
-    { label: 'Contact', href: '/#contact' },
+    // Opens the contact modal instead of linking to a section.
+    { label: 'Contact', opensContact: true },
   ],
   resumeUrl: '/Tracy_Cross_Resume.pdf',
   // Shared chrome on project detail pages, from VetBoard.html / VetIQ.html.

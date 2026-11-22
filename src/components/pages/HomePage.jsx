@@ -9,6 +9,7 @@ import { projects } from '../../content/projects'
 import { site } from '../../content/site'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { useReveal } from '../../hooks/useReveal'
+import { useOpenContact } from '../layout/contactModalContext'
 
 const pad = (n) => String(n).padStart(2, '0')
 
@@ -189,6 +190,7 @@ function HomePage() {
   const { hash } = useLocation()
   const contactRef = useRef(null)
   const pageRef = useRef(null)
+  const openContact = useOpenContact()
   const { hero, trackRecord, ticker, work, approach, background, contact } = home
   useReveal(pageRef)
 
@@ -212,9 +214,14 @@ function HomePage() {
           <div className="home-hero-bottom rise-3">
             <p className="lead">{hero.lead}</p>
             <div className="btn-row">
-              <a className="btn btn-accent" href={hero.primary.href}>
+              <button
+                type="button"
+                className="btn btn-accent"
+                aria-haspopup="dialog"
+                onClick={openContact}
+              >
                 {hero.primary.label}
-              </a>
+              </button>
               <a className="btn btn-outline" href={hero.secondary.href}>
                 {hero.secondary.label}
               </a>
@@ -299,7 +306,7 @@ function HomePage() {
           </h2>
           <div className="btn-row">
             <a className="btn btn-accent" href={`mailto:${site.contact.email}`}>
-              {site.contact.email}
+              {contact.emailLabel}
             </a>
             {contact.links.map((link) => (
               <a
