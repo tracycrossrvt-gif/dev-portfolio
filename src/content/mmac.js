@@ -28,7 +28,7 @@ export const mmac = {
     { label: 'Users', value: 'Public, MMAC admin, hospital staff, volunteers' },
     // `accent` renders in gold ahead of `value`.
     { label: 'Status', accent: 'Live demo', value: ', awaiting MMAC sign-off' },
-    { label: 'Stack', value: 'Next.js · Supabase (PostgreSQL) · Zod · Vercel' },
+    { label: 'Stack', value: 'Next.js · TypeScript · Tailwind · Supabase (PostgreSQL) · Vercel' },
   ],
   sections: [
     {
