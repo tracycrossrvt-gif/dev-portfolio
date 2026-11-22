@@ -122,9 +122,10 @@ export const home = {
     ],
   },
   contact: {
-    label: 'Contact',
+    label: '05 · Contact',
     heading: "Let's fix what your team keeps working around",
-    // The gold email button comes first and shows site.contact.email.
+    // The gold Email button (a mailto: link to site.contact.email) comes first.
+    emailLabel: 'Email',
     links: [
       { label: 'LinkedIn', href: site.contact.linkedin },
       { label: 'GitHub', href: site.contact.github },

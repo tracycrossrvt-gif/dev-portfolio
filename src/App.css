@@ -163,7 +163,7 @@
   color: var(--text-2);
 }
 
-/* Full-bleed background video with a dark overlay (hero). */
+/* Full-bleed background video with a dark overlay (hero and contact). */
 .bg-video {
   position: absolute;
   inset: 0;
@@ -545,6 +545,32 @@
   color: var(--text-2);
 }
 
+.contact-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--surface-1);
+  border-top: 1px solid var(--line);
+}
+
+.contact-inner {
+  padding-block: 144px;
+}
+
+/* Gold drops to about 3:1 over the brightest storm frames; --text stays above 4.5:1. */
+.contact-section .section-label {
+  color: var(--text);
+}
+
+.contact-heading {
+  max-width: 14ch;
+  margin-bottom: 40px;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
 @media (max-width: 720px) {
   .numbered-row {
     grid-template-columns: 1fr;
@@ -652,6 +678,10 @@
     gap: 40px;
     padding-top: 32px;
     padding-bottom: 64px;
+  }
+
+  .contact-inner {
+    padding-block: 72px;
   }
 }
 

@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import winterFogVideo from '../../assets/media/winter-fog.mp4'
 import winterFogPoster from '../../assets/media/winter-fog-poster.jpg'
+import stormVideo from '../../assets/media/about-western-nc-storm.mp4'
+import stormPoster from '../../assets/media/about-western-nc-storm-poster.jpg'
 import { home } from '../../content/home'
 import { projects } from '../../content/projects'
+import { site } from '../../content/site'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 import { useReveal } from '../../hooks/useReveal'
 import { useOpenContact } from '../layout/contactModalContext'
@@ -31,6 +34,54 @@ function HeroVideo() {
       src={winterFogVideo}
       poster={winterFogPoster}
       autoPlay={!reduced}
+      muted
+      loop
+      playsInline
+      aria-hidden="true"
+      tabIndex={-1}
+    />
+  )
+}
+
+// Contact background: a 6 MB file, so nothing loads until the section is near
+// the viewport. It plays while visible. Under reduced motion it never loads and
+// the poster stays on screen.
+function ContactVideo({ sectionRef }) {
+  const ref = useRef(null)
+  const reduced = usePrefersReducedMotion()
+
+  useEffect(() => {
+    const video = ref.current
+    const section = sectionRef.current
+    if (!video || !section) return
+    video.muted = true
+    if (reduced) {
+      video.pause()
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.preload = 'auto'
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { rootMargin: '200px 0px' },
+    )
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [reduced, sectionRef])
+
+  return (
+    <video
+      ref={ref}
+      className="bg-video"
+      src={stormVideo}
+      poster={stormPoster}
+      preload="none"
       muted
       loop
       playsInline
@@ -137,9 +188,10 @@ function ProjectCard({ project, index }) {
 
 function HomePage() {
   const { hash } = useLocation()
+  const contactRef = useRef(null)
   const pageRef = useRef(null)
   const openContact = useOpenContact()
-  const { hero, trackRecord, ticker, work, approach, background } = home
+  const { hero, trackRecord, ticker, work, approach, background, contact } = home
   useReveal(pageRef)
 
   // Arriving from another page via /#section: scroll once the section exists.
@@ -241,6 +293,34 @@ function HomePage() {
             </li>
           ))}
         </ol>
+      </section>
+
+      <section id="contact" className="contact-section" ref={contactRef}>
+        <ContactVideo sectionRef={contactRef} />
+        <div className="bg-overlay" aria-hidden="true" />
+        <div className="container contact-inner">
+          <p className="section-label">{contact.label}</p>
+          <h2 className="contact-heading">
+            {contact.heading}
+            <span className="accent">.</span>
+          </h2>
+          <div className="btn-row">
+            <a className="btn btn-accent" href={`mailto:${site.contact.email}`}>
+              {contact.emailLabel}
+            </a>
+            {contact.links.map((link) => (
+              <a
+                key={link.label}
+                className="btn btn-outline"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   )

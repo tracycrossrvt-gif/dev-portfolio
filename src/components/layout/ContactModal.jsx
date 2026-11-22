@@ -51,7 +51,7 @@ function ContactModal({ open, onClose }) {
         </h2>
         <div className="btn-row">
           <a className="btn btn-accent" href={`mailto:${site.contact.email}`}>
-            {site.contact.email}
+            {contact.emailLabel}
           </a>
           {contact.links.map((link) => (
             <a
